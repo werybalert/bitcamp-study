@@ -28,11 +28,3 @@ public class Exam0400 {
 //
 //* main() 메서드를 주석으로 막은 다음에 컴파일하고 실행해 보자.
 //- 실행 오류 메시지를 확인할 수 있다.
-
-
-//05.24
-// public static void main(String[] args) {} 분실 에러 
-// 
-// PS C:\Users\bitcamp\git\bitcamp-study\java-lang\app> java -classpath bin/main com.emocs.lang.ex01.Exam0400
-// Error: Could not find or load main class com.emocs.lang.ex01.Exam0400
-// Caused by: java.lang.ClassNotFoundException: com.emocs.lang.ex01.Exam0400
