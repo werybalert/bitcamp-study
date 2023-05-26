@@ -13,7 +13,7 @@ public class Exam0350 {
 
 //## 실습
 //1) 컴파일하기
-//- $ javac -d bin/main -encoding UTF-8 src/main/java/com/ohoracs/basic/ex03/Exam35.java
+//- $ javac -d bin/main -encoding UTF-8 src/main/java/com/eomcs/lang/ex03/Exam0350.java
 //
 //2) 클래스 파일로 부동소수점 값 확인하기
 //- Exam35.class 파일을 hexdump 플러그인으로 출력한다.

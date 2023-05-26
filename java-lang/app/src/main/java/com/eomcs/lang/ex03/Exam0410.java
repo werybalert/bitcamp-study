@@ -30,7 +30,7 @@ public class Exam0410 {
     System.out.println('\u0041');  // A
     System.out.println('\uac00');  // 가
     System.out.println('\uAC00');  // 가 (16진수는 대소문자를 구분하지 않는다)
-
+0
     // \ 바로 뒤에 8진수로 적을 수 있다.
     // 단, 0 ~ 377 범위의 8진수만 가능하다.
     System.out.println('\101'); // A
