@@ -1,4 +1,4 @@
-// 05.26 수업
+// 05.26 수업내용
 
 package bitcamp.myapp;
 
