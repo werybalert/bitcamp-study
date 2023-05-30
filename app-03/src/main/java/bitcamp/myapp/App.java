@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
   public static void main(String[] args) {
-    /* 
+
  
     // 값 출력하기
     // println() = 출력 + 줄바꿈
@@ -201,12 +201,12 @@ keyboardScanner.close();
 // 출력 : 25
 // 재직여부?                 n
 // 출력 : n
- */
+ 
 
-// java.util.Scanner keyboardScanner = new java.util.Scanner(System.in);
+/ java.util.Scanner keyboardScanner = new java.util.Scanner(System.in);
 
 
-/* 
+
 
 System.out.print("나이? ");
 int age = keyboardScanner.nextInt();
@@ -400,7 +400,7 @@ scanner.close();
 // 성별(남자(M), 여자(W)): W
 // 좌우시력: 0.1,0.5
 
-*/
+
 // ---------------------------------------------------------------------------------------
 
 // 설치
@@ -421,35 +421,35 @@ float[] leftEye = new float[3];
 float[] rightEye = new float[3];
 
 
-// for (int count = 0; count < 3;  count++) {
-//   //  셋다 같은 의미
-//   // count = count + 1;
-//   // count += 1;
-//   // count++;
+for (int count = 0; count < 3;  count++) {
+  //  셋다 같은 의미
+  // count = count + 1;
+  // count += 1;
+  // count++;
 
 
-//   System.out.print("번호? ");
-//   no[count] = scanner.nextInt();
+  System.out.print("번호? ");
+  no[count] = scanner.nextInt();
 
-//   System.out.print("이름? ");
-//   name[count] = scanner.next();
+  System.out.print("이름? ");
+  name[count] = scanner.next();
 
-//   System.out.print("나이? ");
-//   age[count] = scanner.nextInt();
+  System.out.print("나이? ");
+  age[count] = scanner.nextInt();
 
-//   System.out.print("재직중(true/false)? ");
-//   working[count] = scanner.nextBoolean();
+  System.out.print("재직중(true/false)? ");
+  working[count] = scanner.nextBoolean();
 
-//   System.out.print("성별(남자:M, 여자:W)? ");
-//   String str = scanner.next();
-//   gender[count] = str.charAt(0);
+  System.out.print("성별(남자:M, 여자:W)? ");
+  String str = scanner.next();
+  gender[count] = str.charAt(0);
 
-//   System.out.print("시력(왼쪽, 오른쪽)? ");
-//   leftEye[count] = scanner.nextFloat();
-//   rightEye[count] = scanner.nextFloat();
+  System.out.print("시력(왼쪽, 오른쪽)? ");
+  leftEye[count] = scanner.nextFloat();
+  rightEye[count] = scanner.nextFloat();
 
          
-// }
+}
 
 // 반복문 
 // 번호: 1
@@ -471,7 +471,7 @@ float[] rightEye = new float[3];
 // 성별(남자(M), 여자(W)): M
 // 좌우시력: 1.5,3.5
 
-/* 
+ 
 
 //10명 입력값 넣기
 // 1.
@@ -538,7 +538,6 @@ char gender10 = str.charAt(0);
 System.out.print("시력(왼쪽, 오른쪽)? ");
 float leftEye10 = scanner.nextFloat();
 float rightEye10 = scanner.nextFloat();
-*/
 
  System.out.println("---------------------------------------");
 
