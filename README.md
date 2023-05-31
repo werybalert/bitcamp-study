@@ -30,7 +30,7 @@ https://meet.google.com/sya-jckw-ivq
 ### 3일(5/24,수)
 
 - 개발 도구 준비(계속)
-  - 형상관리시스템 소개 
+  - 형상관리시스템 소개
   - git 사용법: clone, add, commit, push, pull
   - Gradle 설치 및 사용법: init, build, run
     - 빌드도구 소개 및 비교: Ant, Maven, Gradle
@@ -62,7 +62,7 @@ https://meet.google.com/sya-jckw-ivq
       - Sign-Magnitude, 1's Complement, 2's Complement, Excess-K
   - 부동소수점 리터럴
     - 32비트 크기의 2진수로 바꾸는 방법
-    - 64비트 크기의 2진수로 바꾸는 방법 
+    - 64비트 크기의 2진수로 바꾸는 방법
 - 프로젝트 실습
   - 1. 자바 프로젝트 준비하기
   - 2. 리터럴을 사용하여 데이터 출력하기
@@ -90,6 +90,10 @@ https://meet.google.com/sya-jckw-ivq
   - 4. 키보드로 값을 입력 받기
   - 5. 배열과 반복문을 이용하여 여러 개의 데이터를 입력 받기
 
+### 7일(5/31,수)
+
+- 자바 프로그래밍
+  - 연산자 사용법(com.eomcs.lang.ex05)
 
 ## 구글 미트 접속
 
