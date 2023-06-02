@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class App2 {
     public static void main(String[] args) {
-        /*
+
 
 
         Scanner keyScan = new Scanner(System.in);

@@ -169,7 +169,7 @@ import java.util.Scanner;
 //                    gender[i] = scanner.next().charAt(0);
 
 
-                no[i] = userID++;
+                no[i] = userID;
 
             }
 
