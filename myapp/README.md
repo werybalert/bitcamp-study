@@ -39,3 +39,8 @@
 
 - static 메서드를 정의하고 호출하는 방법
 - exercise)app05
+
+## 8. 스태틱 메서드 간에 변수 공유하기
+
+- static 변수를 정의하고 사용하는 방법
+- - exercise)app06
