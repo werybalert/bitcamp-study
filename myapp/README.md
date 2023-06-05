@@ -10,37 +10,45 @@
 ## 2. 리터럴을 사용하여 데이터 출력하기
 
 - 리터럴을 사용하는 방법
-- exercise) app-02
+- practice) app00
 
 ## 3. 변수를 사용하여 데이터를 저장하기
 
 - 변수를 사용하는 방법
-- exercise)app03
+- practice)app00
 
 ## 4. 키보드로 값을 입력 받기
 
 - 키보드로 값을 입력 받는 방법
-- exercise) app04
+- practice) app01
 
 ## 5. 배열과 반복문을 이용하여 여러 개의 데이터를 입력 받기
 
 - 배열 활용
 - 반복문 활용
 - 상수 활용 
-- exercise) app05
+- practice) app02
 ## 6. 조건문을 활용하여 실행 흐름을 제어하기
 
 - if ~ else ~ 조건문 활용
 - switch 활용
 - break 활용 
 - while 활용
-- exercise) app05
+- practice) app03
 ## 7. 메서드를 이용하여 기능 단위로 명령문 묶기
 
 - static 메서드를 정의하고 호출하는 방법
-- exercise)app05
+- practice)app04
 
 ## 8. 스태틱 메서드 간에 변수 공유하기
 
 - static 변수를 정의하고 사용하는 방법
-- - exercise)app06
+- practice)app04
+
+## 9. 메서드를 역할에 따라 분류하기 : 클래스 및 패키지 사용법
+
+- 클래스 및 패키지 사용법(스태틱 클래스)
+- import 명령문 사용법
+- public 접근 제어 사용법
+- 스태틱 변수가 생성되고 제거되는 시점, 메모리 영역
+- practice)app05 
