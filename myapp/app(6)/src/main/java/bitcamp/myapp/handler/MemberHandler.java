@@ -53,6 +53,19 @@ public class MemberHandler {
     }
   }
 
+  public static void viewMember() {
+    String memberNo = prompt.inputString("번호");
+    //입력 받은 번호를 가지고 배열에서 해당 회원을 찾기
+    for (int i=0; i<length; i++) {
+      if (no[i] == memberNo) {
+        //i 번쨰 항목에 저장된 회원 정보 출력
+        return;
+      }
+    }
+    System.out.println("해당 번호의 회원이 없습니다.");
+  }
+
+
   public static boolean available() {
     return length < MAX_SIZE;
   }

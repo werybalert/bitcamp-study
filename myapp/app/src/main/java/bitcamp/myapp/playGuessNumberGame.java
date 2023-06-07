@@ -6,7 +6,7 @@ import static bitcamp.myapp.App2.printRange;
 
 public class playGuessNumberGame {
     public static void main(String[] args) {
-
+// playGuessNumberGame클래스에선 게임에 필요한 환경을 구성했다.
     }
 
     public static void GuessNumGame() {
@@ -26,6 +26,7 @@ public class playGuessNumberGame {
 
                 if (App2.isGuessOutOfRange(guess, low, high)) {
                     System.out.println("범위를 벗어났어요");
+                    //만약 입력된 수가 범위를 벗어났다면 "범위를 벗어났어요" 메시지를 출력합니다.
                 } else {
                     if (App2.isGuessCorrect(guess, card)) {
                         System.out.println("맞았습니다.");

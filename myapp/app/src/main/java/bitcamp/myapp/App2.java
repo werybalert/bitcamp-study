@@ -3,12 +3,10 @@ package bitcamp.myapp;
 import bitcamp.myapp.prompt.prompt;
 
 import java.util.InputMismatchException;
-// 6/5 과제 프로젝트  
+// 6/5 과제 프로젝트
 
 public class App2 {
-
-//    private static Random random = new Random();
-//    private static Scanner scanner = new Scanner(System.in);
+//App2 클래스에선 출력할 화면과 에러를 구성했ㄷ.
 
     public static void main(String[] args) {
 

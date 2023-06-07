@@ -9,14 +9,45 @@ public class App {
 
     printTitle();
 
-    while (MemberHandler.available()) {
-      MemberHandler.inputMember();
-      if (!promptContinue()) {
+    System.out.println("1. 회원등록");
+    System.out.println("2. 회원목록");
+    System.out.println("3. 회원조회");
+    System.out.println("4. 회원변경");
+    System.out.println("5. 회원삭제");
+    System.out.println("6. 종료");
+    System.out.println(">");
+
+
+    while (true) {
+      String menuNo = prompt.inputString(">");
+      if (menuNo.equals("6")) {
         break;
+      } else if (menuNo.equals("menu")) {
+        printMenu();
+      } else if (menuNo.equals("1")) {
+        MemberHandler.inputMember();
+      } else if (menuNo.equals("2")) {
+        MemberHandler.printMembers();
+      } else if (menuNo.equals("3")) {
+        MemberHandler.viewMember();
+      } else {
+        System.out.println(menuNo);
       }
     }
 
-    MemberHandler.printMembers();
+
+
+        /*
+
+        while (MemberHandler.available()) {
+            MemberHandler.inputMember();
+            if (!promptContinue()) {
+                break;
+            }
+        }
+
+        MemberHandler.printMembers();
+ */
 
     Prompt.close();
   }
