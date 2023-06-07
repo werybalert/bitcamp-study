@@ -41,7 +41,6 @@ public class playGuessNumberGame {
                 }
                 attempts++;
             }
-
             if (!App2.playAgain()) {
                 break;
             }

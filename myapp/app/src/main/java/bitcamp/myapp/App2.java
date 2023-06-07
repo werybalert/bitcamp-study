@@ -6,16 +6,12 @@ import java.util.InputMismatchException;
 // 6/5 과제 프로젝트
 
 public class App2 {
-//App2 클래스에선 출력할 화면과 에러를 구성했ㄷ.
+//App2 클래스에선 출력할 화면과 에러를 구성했다.
 
     public static void main(String[] args) {
-
         playGuessNumberGame.GuessNumGame();
         prompt.scanner.close();
-
     }
-
-
 
     public static void printRange(int low, int high) {
         System.out.println(low + "-" + high);
