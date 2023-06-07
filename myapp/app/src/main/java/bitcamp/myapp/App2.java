@@ -3,7 +3,7 @@ package bitcamp.myapp;
 import bitcamp.myapp.prompt.prompt;
 
 import java.util.InputMismatchException;
-
+// 6/5 과제 프로젝트  
 
 public class App2 {
 
