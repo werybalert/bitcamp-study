@@ -8,7 +8,6 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
-
     implementation 'com.google.guava:guava:31.1-jre'
 }
 
@@ -25,7 +24,6 @@ application {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
 
 // 자바 소스를 컴파일 할 때 적용할 옵션
 tasks.withType(JavaCompile) {

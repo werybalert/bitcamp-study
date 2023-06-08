@@ -1,50 +1,89 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.prompt.prompt;
 
-import static bitcamp.myapp.App2.printRange;
+import bitcamp.myapp.prompt.prompt;
+import bitcamp.myapp.heart.life;
+
+import java.util.InputMismatchException;
 
 public class playGuessNumberGame {
-    public static void main(String[] args) {
 // playGuessNumberGame클래스에선 게임에 필요한 환경을 구성했다.
-    }
+
+    public static int low;
+    public static int high;
+    public static int card;
+
+
 
     public static void GuessNumGame() {
 
         while (true) {
-            int low = 0; // 카드 값의 최소 범위
-            int high = 99; // 카드 값의 최대 범위
-            int card = prompt.RandomNumber(); // 카드에 적힌 번호 값(숨기는 값, 정답)
+            low = 0; // 카드 값의 최소 범위
+            high = 99; // 카드 값의 최대 범위
+            card = prompt.RandomNumber(); // 카드에 적힌 번호 값(숨기는 값, 정답)
             System.out.println("Up & Down 게임입니다. 숨겨진 수를 맞추어 보세요");
 
-            int attempts = 0; // 사용자의 시행 횟수
-            while (true) {
-                printRange(low, high); // 값의 범위 출력
-                System.out.print(attempts + 1 + ">>"); // 시행 횟수 출력
+            playGame();
+            life.displayResult();
 
-                int guess = App2.readNumber(); // 수를 입력받는다.
-
-                if (App2.isGuessOutOfRange(guess, low, high)) {
-                    System.out.println("범위를 벗어났어요");
-                    //만약 입력된 수가 범위를 벗어났다면 "범위를 벗어났어요" 메시지를 출력합니다.
-                } else {
-                    if (App2.isGuessCorrect(guess, card)) {
-                        System.out.println("맞았습니다.");
-                        break;
-                    } else if (App2.isGuessHigher(guess, card)) {
-                        System.out.println("더 낮게");
-                        high = guess;
-                    } else {
-                        System.out.println("더 높게");
-                        low = guess;
-                    }
-                }
-                attempts++;
-            }
-            if (!App2.playAgain()) {
+            System.out.print("다시 하시겠습니까? (y/n) >>");
+            String playAgain = prompt.scanner.next();
+            if (playAgain.equals("n"))
                 break;
+        }
+    } // Guessname 끗
+
+    public static void playGame() {
+        int i = 0;
+        while (life.lives > 0) {
+            life.displayRangeAndStats(i);
+            int n = getInput();
+
+            if (n == -1) {
+                continue;
             }
+
+            if (prompt.isOutOfRange(n)) {
+                System.out.println("범위를 벗어났어요");
+            } else {
+                if (n == card) {
+                    System.out.println("맞았습니다.");
+                    break;
+                } else if (n > card) {
+                    System.out.println("더 낮게");
+                    high = n;
+                } else {
+                    System.out.println("더 높게");
+                    low = n;
+                }
+                life.lives--;
+            }
+            i++;
         }
     }
+
+
+    public static int getInput() {
+        int n = 0;
+        try {
+            n = prompt.scanner.nextInt();
+        } catch (InputMismatchException e) {
+            //try 내부의 코드가 InputMismatchException 을 던진다면, 예외를 받아온다.
+            //catch가 실행되는 동안은 Program 이 종료되지 않는다.
+            System.out.println("정수만 입력하셔야 합니다!!");
+            prompt.scanner.nextLine();
+            return -1;
+        }
+        return n;
+    }
+
+
+    public static boolean playAgain() {
+        System.out.print("다시하시겠습니까(y/n)>>");
+        String answer = prompt.scanner.next();
+        return answer.equalsIgnoreCase("y");
+    }
+
+
 
 }
