@@ -1,6 +1,6 @@
 package bitcamp.test.step17;
 
-import bitcamp.test.step17.vo.Score;
+import bitcamp.test.step17.vo.Member;
 
 // 1) 낱개의 변수 사용
 // 2) 낱개의 변수 재사용
@@ -26,12 +26,12 @@ public class App {
   public static void main(String[] args) {
 
     final int MAX_SIZE = 10;
-    Score[] scores = new Score[MAX_SIZE];
+    Member[] scores = new Member[MAX_SIZE];
     int length = 0;
 
-    scores[length++] = new Score("홍길동", 100, 100, 100);
-    scores[length++] = new Score("임꺽정", 90, 90, 90);
-    scores[length++] = new Score("유관순", 80, 800, 80);
+    scores[length++] = new Member("홍길동", 100, 100, 100);
+    scores[length++] = new Member("임꺽정", 90, 90, 90);
+    scores[length++] = new Member("유관순", 80, 800, 80);
 
     //scores[0].kor = 7000; // 접근 불가!
     scores[0].setKor(70); // setter를 통해서는 값 변경 가능. 단 유효한 값만 가능.
@@ -43,7 +43,7 @@ public class App {
 
   }
 
-  static void printScore(Score s) {
+  static void printScore(Member s) {
     System.out.printf("%s: 국어=%d, 영어=%d, 수학=%d, 합계=%d, 평균=%.1f\n", 
       s.getName(), s.getKor(), s.getEng(), s.getMath(), s.getSum(), s.getAver());
   }

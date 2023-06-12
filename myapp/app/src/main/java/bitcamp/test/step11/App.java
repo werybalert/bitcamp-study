@@ -4,7 +4,7 @@ package bitcamp.test.step11;
 // 2) 낱개의 변수 재사용
 // 3) 배열 사용
 // 4) 클래스를 이용하여 데이터 타입 정의(중첩클래스; 로컬 클래스)
-// 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스) 
+// 5) 출력 기능을 별도의 메서드로 분리(중첩클래스; 스태틱 중첩 클래스)
 // 6) 합계 및 평균을 계산하는 기능을 메서드로 분리
 // 7) GRASP 패턴: Information Expert(정보를 갖고 있는 클래스가 그 정보를 다룬다.)
 // 8) 인스턴스 메서드 도입
@@ -12,7 +12,7 @@ package bitcamp.test.step11;
 // 10) GRASP 패턴: Information Expert
 // 11) 생성자 도입: 인스턴스 변수를 보다 쉽게 초기화시키기
 public class App {
-  
+
   static class Score {
     String name;
     int kor;
@@ -35,7 +35,7 @@ public class App {
       this.aver = this.sum / 3f;
     }
   }
-  
+
   public static void main(String[] args) {
 
     final int MAX_SIZE = 10;
@@ -57,8 +57,7 @@ public class App {
   }
 
   static void printScore(Score s) {
-    System.out.printf("%s: 합계=%d, 평균=%.1f\n", 
-      s.name, s.sum, s.aver);
+    System.out.printf("%s: 합계=%d, 평균=%.1f\n", s.name, s.sum, s.aver);
   }
 
 }
