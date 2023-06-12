@@ -19,12 +19,11 @@ public class MemberHandler {
       return;
     }
 
-    Member m = new Member(m.getEmail(), m.getGender(), m.getGender(), m.getName(), m.getPassword());
+    Member m = new Member();
     m.setName(Prompt.inputString("이름? "));
     m.setEmail(Prompt.inputString("이메일? "));
     m.setPassword(Prompt.inputString("암호? "));
     m.setGender(inputGender((char) 0));
-    m.setNo(userId++);
 
     // 위에서 만든 Member 인스턴스의 주소를 잃어버리지 않게
     // 레퍼런스 배열에 담는다.

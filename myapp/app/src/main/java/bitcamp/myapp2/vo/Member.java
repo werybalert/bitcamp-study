@@ -1,14 +1,17 @@
 package bitcamp.myapp2.vo;
 
 public class Member {
+
+  private static int userId = 1;
+
   private int no;
   private String name;
   private String email;
   private String password;
   private char gender;
 
-  public Member(int a) {
-
+  public Member() {
+    this.no = userId++;
   }
 
 
