@@ -1,6 +1,5 @@
 package bitcamp.myapp;
 
-import java.lang.reflect.Method;
 import bitcamp.myapp.handler.MemberHandler;
 import bitcamp.util.Prompt;
 
@@ -19,10 +18,7 @@ public class App {
       } else if (menuNo.equals("menu")) {
         printMenu();
       } else if (menuNo.equals("1")) {
-        Class<?> app2Class = Class.forName("bitcamp.myapp.App2");
-        Method mainMethod = app2Class.getDeclaredMethod("main", String[].class);
-        Object args;
-        mainMethod.invoke(null, args);
+        startGame.startGame();
       } else if (menuNo.equals("2")) {
         MemberHandler.printMembers();
       } else if (menuNo.equals("3")) {
