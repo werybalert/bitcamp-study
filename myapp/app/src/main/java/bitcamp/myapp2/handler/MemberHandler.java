@@ -10,9 +10,6 @@ public class MemberHandler {
   static int userId = 1;
   static int length = 0;
 
-  static final char MALE = 'M';
-  static final char FEMALE = 'W';
-
   public static void inputMember() {
     if (!available()) {
       System.out.println("더이상 입력할 수 없습니다!");
@@ -90,9 +87,9 @@ public class MemberHandler {
 
       switch (menuNo) {
         case "1":
-          return MALE;
+          return Member.MALE;
         case "2":
-          return FEMALE;
+          return Member.FEMALE;
         default:
           System.out.println("무효한 번호입니다.");
       }
