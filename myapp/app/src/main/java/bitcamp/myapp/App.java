@@ -1,51 +1,55 @@
 package bitcamp.myapp;
 
+import java.lang.reflect.Method;
 import bitcamp.myapp.handler.MemberHandler;
 import bitcamp.util.Prompt;
 
 public class App {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        printTitle();
+    printTitle();
 
+    printMenu();
+
+    while (true) {
+      String menuNo = Prompt.inputString("메인> ");
+      if (menuNo.equals("6")) {
+        break;
+      } else if (menuNo.equals("menu")) {
         printMenu();
-
-        while (true) {
-            String menuNo = Prompt.inputString("메인> ");
-            if (menuNo.equals("6")) {
-                break;
-            } else if (menuNo.equals("menu")) {
-                printMenu();
-            } else if (menuNo.equals("1")) {
-                MemberHandler.inputMember();
-            } else if (menuNo.equals("2")) {
-                MemberHandler.printMembers();
-            } else if (menuNo.equals("3")) {
-                MemberHandler.viewMember();
-            } else if (menuNo.equals("4")) {
-                MemberHandler.updateMember();
-            } else if (menuNo.equals("5")) {
-                MemberHandler.deleteMember();
-            } else {
-                System.out.println(menuNo);
-            }
-        }
-
-        Prompt.close();
+      } else if (menuNo.equals("1")) {
+        Class<?> app2Class = Class.forName("bitcamp.myapp.App2");
+        Method mainMethod = app2Class.getDeclaredMethod("main", String[].class);
+        Object args;
+        mainMethod.invoke(null, args);
+      } else if (menuNo.equals("2")) {
+        MemberHandler.printMembers();
+      } else if (menuNo.equals("3")) {
+        MemberHandler.viewMember();
+      } else if (menuNo.equals("4")) {
+        MemberHandler.updateMember();
+      } else if (menuNo.equals("5")) {
+        MemberHandler.deleteMember();
+      } else {
+        System.out.println(menuNo);
+      }
     }
 
-    static void printMenu() {
-        System.out.println("1. 회원등록");
-        System.out.println("2. 회원목록");
-        System.out.println("3. 회원조회");
-        System.out.println("4. 회원변경");
-        System.out.println("5. 회원삭제");
-        System.out.println("6. 종료");
-    }
+    Prompt.close();
+  }
 
-    static void printTitle() {
-        System.out.println("나의 목록 관리 시스템");
-        System.out.println("----------------------------------");
-    }
+  static void printMenu() {
+    System.out.println("1. 게임 시작");
+    System.out.println("2. 전적 조회");
+    System.out.println("3. User 조회");
+    System.out.println("4. User 변경");
+    System.out.println("5. User 삭제");
+    System.out.println("6. 종료");
+  }
+
+  static void printTitle() {
+    System.out.println("랜덤으로 값을 맞추는 게임");
+    System.out.println("----------------------------------");
+  }
 }
