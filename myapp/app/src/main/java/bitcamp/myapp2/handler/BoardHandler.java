@@ -50,6 +50,8 @@ public class BoardHandler {
         System.out.printf("게시글 제목 : %s\n", board.getTitle());
         System.out.printf("게시글 작성자 : %s\n", board.getWriter());
         System.out.printf("게시글 내용 : %s\n", board.getContent());
+        System.out.printf("게시글 등록일 : %tY-%1$tm-%1$td\n", board.getCreatedDate());
+        board.setViewCount(board.getViewCount() + 1);
         return;
       }
     }
@@ -57,24 +59,37 @@ public class BoardHandler {
   }
 
 
+  // 06.14 refactoring 기법 수정
   public static void updateBoard() {
     String boardNo = Prompt.inputString("번호? ");
     for (int i = 0; i < length; i++) {
       Board board = boards[i];
-
       if (board.getNo() == Integer.parseInt(boardNo)) {
+        if (!Prompt.inputString("암호? : ").equals(board.getPassword())) {
+          System.out.println("암호가 일치하지 않습니다!");
+          return;
+        }
 
-        System.out.printf("제목(%s)? ", board.getTitle());
-        board.setTitle(Prompt.inputString(""));
+        // String password = Prompt.inputString("암호? : ");
+        // if (!password.equals(board.getPassword())) {
+        // System.out.println("암호가 일치하지 않습니다!");
+        // return;
+        // }
 
-        System.out.printf("내용(%s)? ", board.getContent());
-        board.setWriter(Prompt.inputString(""));
+        board.setTitle(Prompt.inputString("제목(%s)? ", board.getTitle()));
 
-        System.out.printf("작성자(%s)? ", board.getWriter());
-        board.setWriter(Prompt.inputString(""));
+        // System.out.printf("제목(%s)? ", board.getTitle());
+        // board.setTitle(Prompt.inputString(""));
 
-        System.out.printf("새암호? ");
-        board.setPassword(Prompt.inputString(""));
+        board.setContent(Prompt.inputString("내용(%s)? ", board.getContent()));
+
+        // System.out.printf("내용(%s)? ", board.getContent());
+        // board.setContent(Prompt.inputString(""));
+
+        board.setWriter(Prompt.inputString("작성자(%s)? ", board.getWriter()));
+
+        // System.out.printf("작성자(%s)? ", board.getWriter());
+        // board.setWriter(Prompt.inputString(""));
 
         return;
       }
@@ -84,9 +99,11 @@ public class BoardHandler {
 
 
   public static void deleteBoard() {
-    int boardNo = Prompt.inputInt("번호? ");
+    int deletedIndex = indexOf(Prompt.inputInt("번호? "));
 
-    int deletedIndex = indexOf(boardNo);
+    // int boardNo = Prompt.inputInt("번호? ");
+    // int deletedIndex = indexOf(boardNo);
+
     if (deletedIndex == -1) {
       System.out.println("해당 번호의 게시글이 없습니다!");
       return;

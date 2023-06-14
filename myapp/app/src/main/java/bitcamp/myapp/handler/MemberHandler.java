@@ -20,11 +20,11 @@ public class MemberHandler {
     // }
 
     Number m = new Number();
-    m.no = userId++;
+    // m.no = userId++;
 
     // 위에서 만든 Member 인스턴스의 주소를 잃어버리지 않게
     // 레퍼런스 배열에 담는다.
-    members[length++] = m;
+    // members[length++] = m;
   } // inputMember 끗
 
   public static void printMembers(Number[] MemberHandler) {
@@ -48,7 +48,7 @@ public class MemberHandler {
         return;
       }
     }
-    // System.out.println("해당 번호의 회원이 없습니다!");
+    System.out.println("해당 번호의 회원이 없습니다!");
   } // viewMember 끗
 
   public static String toGenderString(char gender) {
@@ -56,21 +56,21 @@ public class MemberHandler {
   }
 
   public static void updateMember() {
-    String memberNo = Prompt.inputString("번호? ");
-    for (int i = 0; i < length; i++) {
-      MemberHandler m = members[i];
-      if (m.name == Integer.parseInt(memberNo)) {
-        System.out.printf("이름(%s)? ", m.name);
-        m.name = Prompt.inputString("");
-        System.out.printf("이메일(%s)? ", m.email);
-        m.email = Prompt.inputString("");
-        System.out.printf("새암호? ");
-        m.password = Prompt.inputString("");
-        m.gender = inputGender(m.gender);
-        return;
-      }
-    }
-    System.out.println("해당 번호의 회원이 없습니다!");
+    // String memberNo = Prompt.inputString("번호? ");
+    // for (int i = 0; i < length; i++) {
+    // MemberHandler m = members[i];
+    // if (m.name == Integer.parseInt(memberNo)) {
+    // System.out.printf("이름(%s)? ", m.name);
+    // m.name = Prompt.inputString("");
+    // System.out.printf("이메일(%s)? ", m.email);
+    // m.email = Prompt.inputString("");
+    // System.out.printf("새암호? ");
+    // m.password = Prompt.inputString("");
+    // m.gender = inputGender(m.gender);
+    // return;
+    // }
+    // }
+    // System.out.println("해당 번호의 회원이 없습니다!");
   }
 
   private static char inputGender(char gender) {
@@ -111,9 +111,9 @@ public class MemberHandler {
   private static int indexOf(int memberNo) {
     for (int i = 0; i < length; i++) {
       MemberHandler m = members[i];
-      if (m.no == memberNo) {
-        return i;
-      }
+      // if (m.no == memberNo) {
+      // return i;
+      // }
     }
     return -1;
   } // indexOf끗
