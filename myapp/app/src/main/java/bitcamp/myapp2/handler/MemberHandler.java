@@ -4,7 +4,8 @@ import bitcamp.myapp2.vo.Member;
 import bitcamp.util.Prompt;
 
 public class MemberHandler implements Handler {
-  // implements로 MemberHandler는 Handler 규칙에 따라
+  // MemberHandler는 Handler 규칙에 따라 메서드를 구현
+  // 즉 Handler 인터페이스에 선언된 메서드를 모두 정의
 
   private MemberList list = new MemberList();
   private Prompt prompt;
@@ -49,7 +50,7 @@ public class MemberHandler implements Handler {
   // (window > preprence > java > edit > save Editor > configure > Missing code > add check! )
   // Hndler 인터페이스에 선언된 대로 메서드 정의!
   // => "Handler 인터페이스를 구현" 라고 표현함!
-
+  @Override
   public void execute() {
     printMenu();
 

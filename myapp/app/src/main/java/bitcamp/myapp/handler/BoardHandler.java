@@ -1,4 +1,4 @@
-package bitcamp.myapp2.handler;
+package bitcamp.myapp.handler;
 
 import bitcamp.myapp2.vo.Board;
 import bitcamp.util.Prompt;
@@ -8,14 +8,6 @@ public class BoardHandler implements Handler {
   private BoarderList list = new BoarderList();
   private Prompt prompt;
   private String name;
-
-  // private static final int MAX_SIZE = 100;
-  // 인스턴스에 상관없이 공통으로 사용하는 필드라면 스태틱 필드로 선언한다!
-
-  // 인스턴스 마다 별개로 관리해야 할 Data라면, 인스턴스 필드로 선언한다!
-  // private Board[] boards = new Board[MAX_SIZE];
-  // private int length = 0;
-
 
   public BoardHandler(Prompt prompt, String name) {
     this.prompt = prompt;

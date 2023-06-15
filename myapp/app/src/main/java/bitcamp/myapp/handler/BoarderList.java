@@ -1,6 +1,6 @@
 
 // 0615 실습
-package bitcamp.myapp2.handler;
+package bitcamp.myapp.handler;
 
 import bitcamp.myapp2.vo.Board;
 

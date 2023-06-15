@@ -1,4 +1,4 @@
-package bitcamp.myapp2.handler;
+package bitcamp.myapp.handler;
 
 // 0615 실습
 // 핸들러 사용 규칙! => 즉 메서드 호출 규칙을 정의
@@ -8,5 +8,16 @@ package bitcamp.myapp2.handler;
 
 public interface Handler {
   void execute(); // 기본 public abstract
+
+  void userinput();
+
+  void userprint();
+
+  void userview();
+
+  void userupdate();
+
+  void userdelete();
+
 
 }
