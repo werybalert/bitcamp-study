@@ -5,16 +5,9 @@ import bitcamp.util.Prompt;
 
 public class BoardHandler implements Handler {
 
-  private BoarderList list = new BoarderList();
+  private ArrayList list = new ArrayList();
   private Prompt prompt;
   private String name;
-
-  // private static final int MAX_SIZE = 100;
-  // 인스턴스에 상관없이 공통으로 사용하는 필드라면 스태틱 필드로 선언한다!
-
-  // 인스턴스 마다 별개로 관리해야 할 Data라면, 인스턴스 필드로 선언한다!
-  // private Board[] boards = new Board[MAX_SIZE];
-  // private int length = 0;
 
 
   public BoardHandler(Prompt prompt, String name) {
@@ -76,8 +69,9 @@ public class BoardHandler implements Handler {
     System.out.println("---------------------------------------");
 
 
-    Board[] arr = list.list();
-    for (Board b : arr) {
+    Object[] arr = this.list.list();
+    for (Object obj : arr) {
+      Board b = (Board) obj;
       System.out.printf("%d, %s, %s, %d, %tY-%5$tm-%5$td %5$tH:%5$tM:%5$tS\n", b.getNo(),
           b.getTitle(), b.getWriter(), b.getViewCount(), b.getCreatedDate());
     }
@@ -85,7 +79,7 @@ public class BoardHandler implements Handler {
 
   private void viewBoard() {
     int boardNo = this.prompt.inputInt("번호? ");
-    Board board = this.list.get(boardNo);
+    Board board = (Board) this.list.get(boardNo);
 
     if (board == null) {
       System.out.println("해당 게시글이 없습니다!");
@@ -128,8 +122,7 @@ public class BoardHandler implements Handler {
      * return; } } System.out.println("해당 게시글이 없습니다!");
      */
 
-    int boardNo = this.prompt.inputInt("번호? ");
-    Board b = this.list.get(boardNo);
+    Board b = (Board) this.list.get(this.prompt.inputInt("번호? "));
 
     if (b == null) {
       System.out.println("해당 번호의 게시글이 없습니다!");
@@ -142,7 +135,7 @@ public class BoardHandler implements Handler {
 
 
   private void deleteBoard() {
-    if (!this.list.delete(this.prompt.inputInt("번호? "))) {
+    if (!this.list.delete(new Board(this.prompt.inputInt("번호? ")))) {
       System.out.println("해당 번호의 회원이 없습니다!");
     }
     /*

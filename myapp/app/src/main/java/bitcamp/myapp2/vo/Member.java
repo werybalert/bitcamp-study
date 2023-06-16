@@ -32,6 +32,65 @@ public class Member {
     this.no = userId++;
   }
 
+
+
+  // Overloading = 오버로딩
+  // 같은 기능을 수행하는 생성자는 위에 존재
+  // 다만 파라미터가 다를 뿐이다.
+  // 다른말로 = 생성자 오버로딩이라 한다.
+  public Member(int no) {
+    this.no = no;
+  }
+
+
+
+  // object의 equals()는 Member 인스턴스를 비교하는데 적합하지 않다.
+  // Object의 equals()는 단순히 인스턴스 주소가 같은지 비교하기 때문
+  // 우리가 원하는 것은 인스턴스 주소가 다르더라도 그 인스턴스 안에 저장된 변수들의 값이 같다면
+  // 두 인스턴스는 같은 것으로 처리하는 것이다.
+  // 그래서 수퍼 클래스의 equals()를 재정의 한다.
+  // 이것을 Overriding 오버라이팅이라 부른다.
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+
+    if (this.getClass() != obj.getClass()) {
+      return false;
+    }
+
+    // 위 조건에서 this가 가리키는 인스턴스의 클래스와
+    // 파라미터 obj가 가리키는 인스턴스의 클래스가
+    // 같다고 결론이 났기에, obj를 Member 타입으로 형 변환한다.
+
+    Member m = (Member) obj;
+
+    if (this.getNo() != m.getNo()) {
+      return false;
+    }
+
+    // 06.16 실습
+    // if (this.getName() != null && !this.getName().equals(m.getName())) {
+    // return false;
+    // }
+    //
+    // if (this.getEmail() != null && !this.getEmail().equals(m.getEmail())) {
+    // return false;
+    // }
+    //
+    // if (this.getPassword() != null && !this.getPassword().equals(m.getPassword())) {
+    // return false;
+    // }
+    //
+    // if (this.getGender() != m.getGender()) {
+    // return false;
+    // }
+
+    return true;
+  }
+
+
+
   // getter/setter 는 인스턴스 필드의 값을 설정하고 꺼내는 method
   // 보통 회부에서 직접 필드에 접근하는 것을 막았을떄 사용.
   public int getNo() {
