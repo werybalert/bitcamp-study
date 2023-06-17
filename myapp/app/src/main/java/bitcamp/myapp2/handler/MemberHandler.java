@@ -129,7 +129,6 @@ public class MemberHandler implements Handler {
       System.out.println("해당 번호의 회원이 없습니다!");
       return;
     }
-
     m.setName(this.prompt.inputString("이름(%s)? ", m.getName()));
     m.setEmail(this.prompt.inputString("이메일(%s)? ", m.getEmail()));
     m.setPassword(this.prompt.inputString("새암호? "));

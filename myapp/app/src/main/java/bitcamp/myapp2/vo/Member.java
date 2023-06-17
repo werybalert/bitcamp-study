@@ -42,14 +42,14 @@ public class Member {
     this.no = no;
   }
 
-
-
   // object의 equals()는 Member 인스턴스를 비교하는데 적합하지 않다.
   // Object의 equals()는 단순히 인스턴스 주소가 같은지 비교하기 때문
-  // 우리가 원하는 것은 인스턴스 주소가 다르더라도 그 인스턴스 안에 저장된 변수들의 값이 같다면
+  // 우리가 원하는 것은 인스턴스 주소가 다르더라도
+  // 그 인스턴스 안에 저장된 변수들의 값이 같다면
   // 두 인스턴스는 같은 것으로 처리하는 것이다.
   // 그래서 수퍼 클래스의 equals()를 재정의 한다.
   // 이것을 Overriding 오버라이팅이라 부른다.
+
   public boolean equals(Object obj) {
     if (obj == null) {
       return false;
