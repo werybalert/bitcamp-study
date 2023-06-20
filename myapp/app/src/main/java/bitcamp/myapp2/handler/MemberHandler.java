@@ -3,7 +3,7 @@ package bitcamp.myapp2.handler;
 import bitcamp.myapp2.vo.Member;
 import bitcamp.util.LinkedList;
 import bitcamp.util.List;
-import bitcamp.util.Prompt;
+import bitcamp.util.MenuPrompt;
 
 public class MemberHandler implements Handler {
 
@@ -12,29 +12,18 @@ public class MemberHandler implements Handler {
   private List list = new LinkedList();
 
   // private ArrayList list = new ArrayList();
-  private Prompt prompt;
+  private MenuPrompt prompt;
   private String title;
 
 
   // 필요한 값을 외부에서 받고 싶으면 파라미터(Prompt prompt)를 선언하시오!
-  public MemberHandler(Prompt prompt, String title, List list) {
+  public MemberHandler(MenuPrompt prompt, String title, List list) {
     this.prompt = prompt;
     this.title = title;
     this.list = list;
+
     // 생성자 : 인스턴스를 사용할 수 있도록 유효한 값으로 초기화 시키는 일을 수행
     // members = new Member[MAX_SIZE]; => 이렇게도 사용 가능
-  }
-
-
-  // 0615
-
-  private static void printMenu() {
-    System.out.println("0. 메인");
-    System.out.println("1. 등록");
-    System.out.println("2. 목록");
-    System.out.println("3. 조회");
-    System.out.println("4. 변경");
-    System.out.println("5. 삭제");
   }
 
 
@@ -43,32 +32,51 @@ public class MemberHandler implements Handler {
   // (window > preprence > java > edit > save Editor > configure > Missing code > add check! )
   // Hndler 인터페이스에 선언된 대로 메서드 정의!
   // => "Handler 인터페이스를 구현" 라고 표현함!
-  @Override
   public void execute() {
-    printMenu();
+
+    prompt.appendBreadcrumb(this.title, getMenu());
+
+    prompt.printMenu();
 
     while (true) {
-      String menuNo = prompt.inputString(" %s > ", this.title);
-      if (menuNo.equals("0")) {
-        return;
-      } else if (menuNo.equals("menu")) {
-        printMenu();
-      } else if (menuNo.equals("1")) {
-        this.inputMember();
-      } else if (menuNo.equals("2")) {
-        this.printMembers();
-      } else if (menuNo.equals("3")) {
-        this.viewMember();
-      } else if (menuNo.equals("4")) {
-        this.updateMember();
-      } else if (menuNo.equals("5")) {
-        this.deleteMember();
-      } else {
-        System.out.println("메뉴 번호가 옳지 않습니다");
+      String menuNo = prompt.inputMenu();
+      switch (menuNo) {
+        case "0":
+          prompt.removeBreadcrumb();
+          return;
+        case "1":
+          this.inputMember();
+          break;
+        case "2":
+          this.printMembers();
+          break;
+        case "3":
+          this.viewMember();
+          break;
+        case "4":
+          this.updateMember();
+          break;
+        case "5":
+          this.deleteMember();
+          break;
       }
     }
   }
 
+
+
+  // 0615
+
+  private static String getMenu() {
+    StringBuilder menu = new StringBuilder();
+    menu.append("1. 등록\n");
+    menu.append("2. 목록\n");
+    menu.append("3. 조회\n");
+    menu.append("4. 변경\n");
+    menu.append("5. 삭제\n");
+    menu.append("0. 메인\n");
+    return menu.toString();
+  }
 
   private void inputMember() {
     Member m = new Member();

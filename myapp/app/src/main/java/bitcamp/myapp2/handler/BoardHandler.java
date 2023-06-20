@@ -2,7 +2,7 @@ package bitcamp.myapp2.handler;
 
 import bitcamp.myapp2.vo.Board;
 import bitcamp.util.List;
-import bitcamp.util.Prompt;
+import bitcamp.util.MenuPrompt;
 
 public class BoardHandler implements Handler {
 
@@ -14,49 +14,62 @@ public class BoardHandler implements Handler {
   // private LinkedList list = new LinkedList();
 
   // private ArrayList list = new ArrayList();
-  private Prompt prompt;
-  private String name;
+  private MenuPrompt prompt;
+  private String title;
 
 
-  public BoardHandler(Prompt prompt, String name, List list) {
+  public BoardHandler(MenuPrompt prompt, String title, List list) {
     this.prompt = prompt;
-    this.name = name;
+    this.title = title;
     this.list = list; // interface 의존 객체 생성
   }
 
-  private static void printMenu() {
-    System.out.println("0. 메인");
-    System.out.println("1. 등록");
-    System.out.println("2. 목록");
-    System.out.println("3. 조회");
-    System.out.println("4. 변경");
-    System.out.println("5. 삭제");
-  }
+
 
   public void execute() {
-    printMenu();
+
+    prompt.appendBreadcrumb(this.title, getMenu());
+
+    prompt.printMenu();
 
     while (true) {
-      String menuNo = prompt.inputString(" %s > ", this.name);
-      if (menuNo.equals("0")) {
-        return;
-      } else if (menuNo.equals("menu")) {
-        printMenu();
-      } else if (menuNo.equals("1")) {
-        this.inputBoard();
-      } else if (menuNo.equals("2")) {
-        this.printBoards();
-      } else if (menuNo.equals("3")) {
-        this.viewBoard();
-      } else if (menuNo.equals("4")) {
-        this.updateBoard();
-      } else if (menuNo.equals("5")) {
-        this.deleteBoard();
-      } else {
-        System.out.println("메뉴 번호가 옳지 않습니다");
+      String menuNo = prompt.inputMenu();
+
+      switch (menuNo) {
+        case "0":
+          prompt.removeBreadcrumb();
+          return;
+        case "1":
+          this.inputBoard();
+          break;
+        case "2":
+          this.printBoards();
+          break;
+        case "3":
+          this.viewBoard();
+          break;
+        case "4":
+          this.updateBoard();
+          break;
+        case "5":
+          this.deleteBoard();
+          break;
       }
     }
   }
+
+  private static String getMenu() {
+    StringBuilder menu = new StringBuilder();
+
+    menu.append("0.메인\n");
+    menu.append("1.등록\n");
+    menu.append("2.목록\n");
+    menu.append("3.조회\n");
+    menu.append("4.변경\n");
+    menu.append("5.삭제\n");
+    return menu.toString();
+  }
+
 
   // 인스턴스 멤버(필드나 메서드)를 사용하는 경우 인스턴스 메서드로 정의해야 한다!
   private void inputBoard() {
@@ -78,7 +91,7 @@ public class BoardHandler implements Handler {
     System.out.println("---------------------------------------");
 
 
-    Object[] arr = this.list.toArray();
+    // Object[] arr = this.list.toArray();
     // for (Object obj : arr) {
     for (int i = 0; i < this.list.size(); i++) {
       Board b = (Board) this.list.get(i);
@@ -106,33 +119,6 @@ public class BoardHandler implements Handler {
 
   // 06.14 refactoring 기법 수정
   private void updateBoard() {
-    /*
-     * String boardNo = this.prompt.inputString("번호? "); for (int i = 0; i < this.length; i++) {
-     * Board board = this.boards[i]; if (board.getNo() == Integer.parseInt(boardNo)) { if
-     * (!this.prompt.inputString("암호? : ").equals(board.getPassword())) {
-     * System.out.println("암호가 일치하지 않습니다!"); return; }
-     *
-     * // String password = Prompt.inputString("암호? : "); // if
-     * (!password.equals(board.getPassword())) { // System.out.println("암호가 일치하지 않습니다!"); // return;
-     * // }
-     *
-     * board.setTitle(this.prompt.inputString("제목(%s)? ", board.getTitle()));
-     *
-     * // System.out.printf("제목(%s)? ", board.getTitle()); //
-     * board.setTitle(Prompt.inputString(""));
-     *
-     * board.setContent(this.prompt.inputString("내용(%s)? ", board.getContent()));
-     *
-     * // System.out.printf("내용(%s)? ", board.getContent()); //
-     * board.setContent(Prompt.inputString(""));
-     *
-     * board.setWriter(this.prompt.inputString("작성자(%s)? ", board.getWriter()));
-     *
-     * // System.out.printf("작성자(%s)? ", board.getWriter()); //
-     * board.setWriter(Prompt.inputString(""));
-     *
-     * return; } } System.out.println("해당 게시글이 없습니다!");
-     */
 
     Board b = this.findBy(this.prompt.inputInt("번호? "));
 

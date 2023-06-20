@@ -84,7 +84,7 @@ public class LinkedList implements List {
     tail = node;
     size++;
     return true;
-  }
+  } // add 끗
 
   @Override
   public Object[] toArray() {
@@ -97,7 +97,7 @@ public class LinkedList implements List {
     }
 
     return arr;
-  }
+  } // toArray 끗
 
   @Override
   public Object get(int index) {
@@ -110,7 +110,7 @@ public class LinkedList implements List {
       cursor = cursor.next;
     }
     return cursor.value;
-  }
+  } // get 끗
 
   @Override
   public boolean remove(Object value) {
@@ -152,7 +152,7 @@ public class LinkedList implements List {
       cursor = cursor.next;
     }
     return false;
-  }
+  } // remove 끗
 
   @Override
   public Object remove(int index) {
@@ -192,17 +192,17 @@ public class LinkedList implements List {
     cursor.value = null;
     return old;
 
-  }
+  } // remove 끗
 
   @Override
   public int size() {
     return this.size;
-  }
+  } // size 끗
 
 
   private boolean isValid(int index) {
     return index >= 0 && index <= this.size;
-  }
+  } // isValid 끗
 
 
 
@@ -212,5 +212,5 @@ public class LinkedList implements List {
 
     Node next;
     Object value;// 이 타입은 자손 객체의 주소를 저장하기에 탁월하다~
-  }
+  } // Node 끗
 }

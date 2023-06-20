@@ -5,7 +5,7 @@ import bitcamp.myapp2.handler.Handler;
 import bitcamp.myapp2.handler.MemberHandler;
 import bitcamp.util.ArrayList;
 import bitcamp.util.LinkedList;
-import bitcamp.util.Prompt;
+import bitcamp.util.MenuPrompt;
 
 
 // ctrl + shift + o = import 자동 생성 구문
@@ -14,7 +14,9 @@ public class App {
 
   public static void main(String[] args) {
 
-    Prompt prompt = new Prompt();
+    MenuPrompt prompt = new MenuPrompt();
+    prompt.appendBreadcrumb("메인", getMenu());
+
     Handler memberHandler = new MemberHandler(prompt, "회원", new ArrayList()); // 의존객체 주입
     Handler boardHandler = new BoardHandler(prompt, "게시글", new LinkedList());
     Handler readHandler = new BoardHandler(prompt, "독서록", new LinkedList());
@@ -28,33 +30,43 @@ public class App {
 
     printTitle();
 
-    printMenu();
+    prompt.printMenu();
 
-    while (true) {
-      String menuNo = prompt.inputString("메인> ");
-      if (menuNo.equals("0")) {
-        break;
-      } else if (menuNo.equals("menu")) {
-        printMenu();
-      } else if (menuNo.equals("1")) {
-        memberHandler.execute();
-      } else if (menuNo.equals("2")) {
-        boardHandler.execute(); // 객체 사용하는 규칙
-      } else if (menuNo.equals("3")) {
-        readHandler.execute(); // 객체 사용하는 규칙
-      } else {
-        System.out.println("메뉴 번호가 옳지 않습니다");
+    loop: while (true) {
+      String menuNo = prompt.inputMenu();
+      switch (menuNo) {
+        case "0":
+          break loop;
+        case "1":
+          System.out.println("------------");
+          memberHandler.execute();
+          break;
+        case "2":
+          boardHandler.execute();
+          break;
+        case "3":
+          readHandler.execute();
+          break;
+
       }
     }
-
     prompt.close();
+
   }
 
-  static void printMenu() {
-    System.out.println("0. 종료");
-    System.out.println("1. 회원등록");
-    System.out.println("2. 게시글");
-    System.out.println("3. 독서록");
+  static String getMenu() {
+    StringBuilder menu = new StringBuilder();
+    menu.append("1.회원\n");
+    menu.append("2.게시글\n");
+    menu.append("3.독서록\n");
+    menu.append("0.종료\n");
+
+    return menu.toString();
+    // 0620 실습
+    // System.out.println("0. 종료");
+    // System.out.println("1. 회원등록");
+    // System.out.println("2. 게시글");
+    // System.out.println("3. 독서록");
 
 
     // System.out.println("4. 회원변경");

@@ -32,4 +32,5 @@ public class Prompt {
     this.scanner.close();
 
   }
+
 }
