@@ -36,7 +36,7 @@ public class Board {
     if (this.getNo() != b.getNo()) {
       return false;
     }
-    return false;
+    return true;
 
   }
 

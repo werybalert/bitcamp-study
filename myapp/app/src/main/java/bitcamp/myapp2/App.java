@@ -3,6 +3,8 @@ package bitcamp.myapp2;
 import bitcamp.myapp2.handler.BoardHandler;
 import bitcamp.myapp2.handler.Handler;
 import bitcamp.myapp2.handler.MemberHandler;
+import bitcamp.util.ArrayList;
+import bitcamp.util.LinkedList;
 import bitcamp.util.Prompt;
 
 
@@ -13,9 +15,9 @@ public class App {
   public static void main(String[] args) {
 
     Prompt prompt = new Prompt();
-    Handler memberHandler = new MemberHandler(prompt, "회원"); // 의존객체 주입
-    Handler boardHandler = new BoardHandler(prompt, "게시글");
-    Handler readHandler = new BoardHandler(prompt, "독서록");
+    Handler memberHandler = new MemberHandler(prompt, "회원", new ArrayList()); // 의존객체 주입
+    Handler boardHandler = new BoardHandler(prompt, "게시글", new LinkedList());
+    Handler readHandler = new BoardHandler(prompt, "독서록", new LinkedList());
     // 모든 핸들러는 Handler 규칙에 따라 정의되었기 떄문에
     // Handler 레퍼런스에 그 주소를 담을 수 있다.
 

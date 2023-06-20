@@ -21,6 +21,6 @@ public class MinusCalcul extends Calculator{
     public int run(int num1, int num2, int num3) {
         return num1-num2-num3;
     }
-
+`
 
 }

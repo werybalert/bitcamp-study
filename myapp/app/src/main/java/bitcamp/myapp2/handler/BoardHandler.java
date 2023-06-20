@@ -1,18 +1,27 @@
 package bitcamp.myapp2.handler;
 
 import bitcamp.myapp2.vo.Board;
+import bitcamp.util.List;
 import bitcamp.util.Prompt;
 
 public class BoardHandler implements Handler {
 
-  private ArrayList list = new ArrayList();
+
+  // 06.19 실습
+  private List list;
+  // private List list = new LinkedList();
+
+  // private LinkedList list = new LinkedList();
+
+  // private ArrayList list = new ArrayList();
   private Prompt prompt;
   private String name;
 
 
-  public BoardHandler(Prompt prompt, String name) {
+  public BoardHandler(Prompt prompt, String name, List list) {
     this.prompt = prompt;
     this.name = name;
+    this.list = list; // interface 의존 객체 생성
   }
 
   private static void printMenu() {
@@ -69,17 +78,19 @@ public class BoardHandler implements Handler {
     System.out.println("---------------------------------------");
 
 
-    Object[] arr = this.list.list();
-    for (Object obj : arr) {
-      Board b = (Board) obj;
-      System.out.printf("%d, %s, %s, %d, %tY-%5$tm-%5$td %5$tH:%5$tM:%5$tS\n", b.getNo(),
+    Object[] arr = this.list.toArray();
+    // for (Object obj : arr) {
+    for (int i = 0; i < this.list.size(); i++) {
+      Board b = (Board) this.list.get(i);
+      System.out.printf("%d, %s , %s, %d, %tY-%5$tm-%5$td %5$tH:%5$tM:%5$tS\n", b.getNo(),
           b.getTitle(), b.getWriter(), b.getViewCount(), b.getCreatedDate());
     }
+
   }
 
   private void viewBoard() {
     int boardNo = this.prompt.inputInt("번호? ");
-    Board board = (Board) this.list.get(boardNo);
+    Board board = this.findBy(boardNo); // 06.19 수정 LinkedList 확인
 
     if (board == null) {
       System.out.println("해당 게시글이 없습니다!");
@@ -90,6 +101,7 @@ public class BoardHandler implements Handler {
     System.out.printf("게시글 작성자 : %s\n", board.getWriter());
     System.out.printf("게시글 내용 : %s\n", board.getContent());
     System.out.printf("게시글 등록일 : %tY-%1$tm-%1$td\n", board.getCreatedDate());
+    board.setViewCount(board.getViewCount() + 1);
   }
 
   // 06.14 refactoring 기법 수정
@@ -122,12 +134,18 @@ public class BoardHandler implements Handler {
      * return; } } System.out.println("해당 게시글이 없습니다!");
      */
 
-    Board b = (Board) this.list.get(this.prompt.inputInt("번호? "));
+    Board b = this.findBy(this.prompt.inputInt("번호? "));
 
     if (b == null) {
       System.out.println("해당 번호의 게시글이 없습니다!");
       return;
     }
+
+    if (!this.prompt.inputString("암호? ").equals(b.getPassword())) {
+      System.out.println("암호가 일치하지 않습니다!");
+      return;
+    }
+
     b.setTitle(this.prompt.inputString("게시글 제목 : %s\\n", b.getTitle()));
     b.setWriter(this.prompt.inputString("게시글 작성자 : %s\n", b.getTitle()));
     b.setContent(this.prompt.inputString("게시글 내용 : %s\n", b.getContent()));
@@ -135,7 +153,7 @@ public class BoardHandler implements Handler {
 
 
   private void deleteBoard() {
-    if (!this.list.delete(new Board(this.prompt.inputInt("번호? ")))) {
+    if (!this.list.remove(new Board(this.prompt.inputInt("번호? ")))) {
       System.out.println("해당 번호의 회원이 없습니다!");
     }
     /*
@@ -147,6 +165,18 @@ public class BoardHandler implements Handler {
      *
      * this.boards[--this.length] = null;
      */
+  }
+
+  private Board findBy(int no) {
+    Object[] arr = this.list.toArray();
+
+    for (int i = 0; i < this.list.size(); i++) {
+      Board b = (Board) this.list.get(i);
+      if (b.getNo() == no) {
+        return b;
+      }
+    }
+    return null;
   }
 
 

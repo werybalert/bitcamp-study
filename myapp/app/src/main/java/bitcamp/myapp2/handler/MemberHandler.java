@@ -1,19 +1,26 @@
 package bitcamp.myapp2.handler;
 
 import bitcamp.myapp2.vo.Member;
+import bitcamp.util.LinkedList;
+import bitcamp.util.List;
 import bitcamp.util.Prompt;
 
 public class MemberHandler implements Handler {
 
-  private ArrayList list = new ArrayList();
+  // 06.19 실습
+  // private List list = new LinkedList();
+  private List list = new LinkedList();
+
+  // private ArrayList list = new ArrayList();
   private Prompt prompt;
   private String title;
 
 
   // 필요한 값을 외부에서 받고 싶으면 파라미터(Prompt prompt)를 선언하시오!
-  public MemberHandler(Prompt prompt, String title) {
+  public MemberHandler(Prompt prompt, String title, List list) {
     this.prompt = prompt;
     this.title = title;
+    this.list = list;
     // 생성자 : 인스턴스를 사용할 수 있도록 유효한 값으로 초기화 시키는 일을 수행
     // members = new Member[MAX_SIZE]; => 이렇게도 사용 가능
   }
@@ -70,7 +77,7 @@ public class MemberHandler implements Handler {
     m.setPassword(this.prompt.inputString("암호? "));
     m.setGender(inputGender((char) 0));
 
-    this.list.add(m);
+    this.list.add(m); // add의 입력 실패는 LinkedList에선 볼수 없다
 
     // if (!this.list.add(m)) {
     // System.out.println("입력 실패 입니다.");
@@ -92,18 +99,18 @@ public class MemberHandler implements Handler {
     System.out.println("번호, 이름, 이메일, 성별");
     System.out.println("---------------------------------------");
 
-    Object[] arr = this.list.list();
-    for (Object obj : arr) {
-      Member m = (Member) obj;
+    // Object[] arr = this.list.toArray();
+    // for (Object obj : arr) {
+    for (int i = 0; i < this.list.size(); i++) {
+      Member m = (Member) this.list.get(i);
       System.out.printf("%d, %s, %s, %s\n", m.getNo(), m.getName(), m.getEmail(),
           toGenderString(m.getGender()));
     }
   }
 
   private void viewMember() {
-    int memberNo = this.prompt.inputInt("번호? ");
 
-    Member m = (Member) this.list.get(new Member(memberNo));
+    Member m = this.findBy(this.prompt.inputInt("번호? "));
 
     if (m == null) {
       System.out.println("해당 번호의 회원이 없습니다!");
@@ -122,9 +129,8 @@ public class MemberHandler implements Handler {
   }
 
   private void updateMember() {
-    int memberNo = this.prompt.inputInt("번호? ");
 
-    Member m = (Member) this.list.get(new Member(memberNo));
+    Member m = this.findBy(this.prompt.inputInt("번호? "));
     if (m == null) {
       System.out.println("해당 번호의 회원이 없습니다!");
       return;
@@ -160,9 +166,26 @@ public class MemberHandler implements Handler {
 
   private void deleteMember() {
 
-    if (!this.list.delete(new Member(this.prompt.inputInt("번호? ")))) {
+    if (!this.list.remove(new Member(this.prompt.inputInt("번호? ")))) {
       System.out.println("해당 번호의 회원이 없습니다!");
     }
   }
+
+
+  private Member findBy(int no) {
+
+    // Object[] arr = this.list.toArray();
+    // for (Object obj : arr) {
+
+    for (int i = 0; i < this.list.size(); i++) {
+      Member m = (Member) this.list.get(i);
+      if (m.getNo() == no) {
+        return m;
+      }
+    }
+    return null;
+  }
+
+
 }
 
