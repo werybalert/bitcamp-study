@@ -1,6 +1,4 @@
 
-package bitcamp.myapp;
-
 public class TestMain {
 
     public static void main(String[] args) {
@@ -8,33 +6,10 @@ public class TestMain {
         Calculator cal2 = new MinusCalcul(100, 200);
 
         new TestMain().calRun(cal1);
-//        [className] bitcamp.myapp.PlusCalcul
-//        Result()
-//        300
-//        500
-//        600
-//        run()
-//        300
-//        500
-//        600
-
-        System.out.println("================================");
         new TestMain().calRun(cal2);
-
-//        [className] bitcamp.myapp.MinusCalcul
-//        Result()
-//        -100
-//        100
-//        0
-//        run()
-//        -100
-//        100
-//        0
-
 
         System.out.println("================================");
         new TestMain().calCalRun(cal1);
-        System.out.println("================================");
         new TestMain().calCalRun(cal2);
 
     }
