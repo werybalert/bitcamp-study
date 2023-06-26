@@ -1,7 +1,5 @@
 package bitcamp.test;
 
-import bitcamp.test.p1.A;
-
 // 06.16 실습
 public class Test3 extends A {
   public static void main(String[] args) {
