@@ -5,20 +5,18 @@ import java.util.Scanner;
 
 public class Prompt {
 
-  private static Scanner scanner;
+  private Scanner scanner;
 
   // default constructor 정의
   public Prompt() {
     this.scanner = new Scanner(System.in);
   }
 
-  // 다른 입력 도구와 연결한다면?
+  // 다른 입력 도구와 연결한다면
   public Prompt(InputStream in) {
     this.scanner = new Scanner(in);
   }
 
-
-  // 0614 수정
   public String inputString(String title, Object... args) {
     System.out.printf(title, args);
     return this.scanner.nextLine();
@@ -30,7 +28,6 @@ public class Prompt {
 
   public void close() {
     this.scanner.close();
-
   }
 
 }

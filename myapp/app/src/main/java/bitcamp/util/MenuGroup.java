@@ -1,13 +1,14 @@
 package bitcamp.util;
 
+import java.util.ArrayList;
+
 public class MenuGroup extends Menu {
 
-  ArrayList childs;
+  ArrayList<Menu> childs;
 
-  public MenuGroup(String title) { // Implicit super constructor Menu() is undefined. Must
-                                   // explicitly invoke another constructor
+  public MenuGroup(String title) {
     super(title);
-    this.childs = new ArrayList();
+    this.childs = new ArrayList<>();
   }
 
   public void add(Menu menu) {
@@ -16,9 +17,11 @@ public class MenuGroup extends Menu {
 
   @Override
   public void execute(BreadcrumbPrompt prompt) {
+
     prompt.appendBreadcrumb(this.getTitle());
 
     this.printMenu();
+
     while (true) {
       String input = prompt.inputMenu();
       if (input.equals("menu")) {
@@ -33,19 +36,17 @@ public class MenuGroup extends Menu {
         prompt.removeBreadcrumb();
         return;
       } else {
-        Menu menu = (Menu) this.childs.get(menuNo - 1);
+        Menu menu = this.childs.get(menuNo - 1);
         menu.execute(prompt);
       }
     }
-
   }
 
   private void printMenu() {
     for (int i = 0; i < childs.size(); i++) {
-      Menu menu = (Menu) childs.get(i);
+      Menu menu = childs.get(i);
       System.out.printf("%d. %s\n", i + 1, menu.getTitle());
     }
-    System.out.println("0. 이전 또는 종료");
+    System.out.println("0. 이전/종료");
   }
-
 }

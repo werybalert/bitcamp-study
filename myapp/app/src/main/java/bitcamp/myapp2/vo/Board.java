@@ -2,26 +2,24 @@ package bitcamp.myapp2.vo;
 
 public class Board {
 
-  private static int bardNo = 1;
+  public static int boardNo = 1;
 
   private int no;
   private String title;
   private String content;
-
   private String writer;
   private String password;
   private int viewCount;
   private long createdDate;
 
   public Board() {
-    this.no = bardNo++;
+    this.no = boardNo++;
     this.createdDate = System.currentTimeMillis();
   }
 
   public Board(int no) {
     this.no = no;
   }
-
 
   public boolean equals(Object obj) {
     if (obj == null) {
@@ -33,13 +31,13 @@ public class Board {
     }
 
     Board b = (Board) obj;
+
     if (this.getNo() != b.getNo()) {
       return false;
     }
+
     return true;
-
   }
-
 
   public int getNo() {
     return no;
@@ -96,7 +94,6 @@ public class Board {
   public void setPassword(String password) {
     this.password = password;
   }
-
 
 
 }
