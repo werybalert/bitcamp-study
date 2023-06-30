@@ -1,10 +1,14 @@
 package bitcamp.myapp2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import bitcamp.io.DataInputStream;
-import bitcamp.io.DataOutputStream;
 import bitcamp.myapp2.handler.BoardAddListener;
 import bitcamp.myapp2.handler.BoardDeleteListener;
 import bitcamp.myapp2.handler.BoardDetailListener;
@@ -19,6 +23,7 @@ import bitcamp.myapp2.handler.MemberDetailListener;
 import bitcamp.myapp2.handler.MemberListListener;
 import bitcamp.myapp2.handler.MemberUpdateListener;
 import bitcamp.myapp2.vo.Board;
+import bitcamp.myapp2.vo.CsvObject;
 import bitcamp.myapp2.vo.Member;
 import bitcamp.util.BreadcrumbPrompt;
 import bitcamp.util.Menu;
@@ -44,7 +49,7 @@ public class App {
 
   static void printTitle() {
     System.out.println("나의 목록 관리 시스템");
-    System.out.println("----------------------------------");
+
   }
 
   public void execute() {
@@ -58,15 +63,20 @@ public class App {
   }
 
   private void loadData() {
-    loadMember();
-    loadBoard("board.data", boardList);
-    loadBoard("reading.data", readingList);
+    // 0630 test코드에 필요한 코드
+    // test(Member.class);
+    // test(Board.class);
+    // test(String.class);
+
+    loadCsv("member.csv", memberList, Member.class);
+    loadCsv("board.csv", boardList, Board.class);
+    loadCsv("reading.csv", readingList, Board.class);
   }
 
   private void saveData() {
-    saveMember();
-    saveBoard("board.data", boardList);
-    saveBoard("reading.data", readingList);
+    saveCsv("member.csv", memberList);
+    saveCsv("board.csv", boardList);
+    saveCsv("reading.csv", readingList);
   }
 
   private void prepareMenu() {
@@ -100,106 +110,30 @@ public class App {
     helloMenu.addActionListener(new FooterListener());
     mainMenu.add(helloMenu);
   }
+  /*
+   *
+   * // 0630 실습 private void test(Class<? extends CsvObject> clazz) { try { Method method =
+   * clazz.getDeclaredMethod("fromCsv", String.class); // getMEthod : public class만 // 출력
+   * System.out.println(clazz.getSimpleName()); } catch (Exception e) {
+   * System.out.println("fromCsv 메서드를 꺼내다가 오류 발생"); } }
+   *
+   */
 
-  private void loadMember() {
+  // 0630 실습 (loadMember + loadBoard 중복을 방지하고자 혼합한 코드)
+  @SuppressWarnings("unchecked")
+  private <T extends CsvObject> void loadCsv(String filename, List<T> list, Class<T> clazz) {
     try {
-      DataInputStream in = new DataInputStream("member.data");
+      Method factoryMethod = clazz.getDeclaredMethod("fromCsv", String.class);
 
-      int size = in.readShort();
+      FileReader in0 = new FileReader(filename);
+      BufferedReader in = new BufferedReader(in0); // <== Decorator 역할을 수행!
 
-      // int size = in.read() << 8;
-      // size |= in.read();
-      //
-      // byte[] buf = new byte[1000];
+      String line = null;
 
-      for (int i = 0; i < size; i++) {
-        Member member = new Member();
-        member.setNo(in.readInt());
-        member.setName(in.readUTF());
-        member.setEmail(in.readUTF());
-        member.setPassword(in.readUTF());
-        member.setGender(in.readChar());
-        memberList.add(member);
-
-
-
-        // member.setNo(in.read() << 24 | in.read() << 16 | in.read() << 8 | in.read());
-        //
-        // int length = in.read() << 8 | in.read();
-        // in.read(buf, 0, length);
-        // member.setName(new String(buf, 0, length, "UTF-8"));
-        //
-        // length = in.read() << 8 | in.read();
-        // in.read(buf, 0, length);
-        // member.setEmail(new String(buf, 0, length, "UTF-8"));
-        //
-        // length = in.read() << 8 | in.read();
-        // in.read(buf, 0, length);
-        // member.setPassword(new String(buf, 0, length, "UTF-8"));
-        //
-        // member.setGender((char) (in.read() << 8 | in.read()));
-        //
-        // memberList.add(member);
-        // Member.userId = member.getNo() + 1;
+      while ((line = in.readLine()) != null) {
+        list.add((T)factoryMethod.invoke(null, line)); // Reflection API를 사용하여 스태틱 메서드 호출
+        // list.add(Member.fromCsv(line)); // 직접 스태틱 메서드 호출
       }
-
-      // 데이터를 로딩한 이후에 추가할 회원의 번호를 설정한다.
-      Member.userId = memberList.get(memberList.size() - 1).getNo() + 1;
-
-      in.close();
-
-    } catch (Exception e) {
-      System.out.println("회원 정보를 읽는 중 오류 발생!");
-    }
-  }
-
-  private void loadBoard(String filename, List<Board> list) {
-    try {
-      DataInputStream in = new DataInputStream(filename);
-      int size = in.readShort();
-
-//      byte[] buf = new byte[1000];
-
-      for (int i = 0; i < size; i++) {
-        Board board = new Board();
-        board.setNo(in.readInt());
-        board.setTitle(in.readUTF());
-        board.setContent(in.readUTF());
-        board.setWriter(in.readUTF());
-        board.setPassword(in.readUTF());
-        board.setViewCount(i);
-        board.setCreatedDate(size);
-        list.add(board);
-
-        /*
-         * board.setNo(in.read() << 24 | in.read() << 16 | in.read() << 8 | in.read());
-         *
-         * int length = in.read() << 8 | in.read(); in.read(buf, 0, length); board.setTitle(new
-         * String(buf, 0, length, "UTF-8"));
-         *
-         * length = in.read() << 8 | in.read(); in.read(buf, 0, length); board.setContent(new
-         * String(buf, 0, length, "UTF-8"));
-         *
-         * length = in.read() << 8 | in.read(); in.read(buf, 0, length); board.setWriter(new
-         * String(buf, 0, length, "UTF-8"));
-         *
-         * length = in.read() << 8 | in.read(); in.read(buf, 0, length); board.setPassword(new
-         * String(buf, 0, length, "UTF-8"));
-         *
-         * board.setViewCount(in.read() << 24 | in.read() << 16 | in.read() << 8 | in.read());
-         *
-         * board.setCreatedDate((long) in.read() << 56 | (long) in.read() << 48 | (long) in.read()
-         * << 40 | (long) in.read() << 32 | (long) in.read() << 24 | (long) in.read() << 16 | (long)
-         * in.read() << 8 | in.read());
-         *
-         * list.add(board);
-         *
-         *
-         *
-         */
-      }
-
-      Board.boardNo = Math.max(Board.boardNo, list.get(list.size() - 1).getNo() + 1);
 
       in.close();
 
@@ -208,94 +142,19 @@ public class App {
     }
   }
 
-  private void saveMember() {
+  private void saveCsv(String filename, List<? extends CsvObject> list) { // ? : 아직 결정된건 없다.
     try {
-      DataOutputStream out = new DataOutputStream("member.data");
+      FileWriter out0 = new FileWriter(filename);
+      BufferedWriter out1 = new BufferedWriter(out0); // <== Decorator(장식품) 역할 수행!
+      PrintWriter out = new PrintWriter(out1); // <== Decorator(장식품) 역할 수행!
 
-      // 저장할 데이터의 개수를 먼저 출력한다.
-      out.writeShort(memberList.size());
-
-      // 본 코드를 간략화 하기(DataOUtputstream 생성 후)
-      // int size = memberList.size();
-      // out.writeShort(size >> 8);
-
-
-
-      for (Member member : memberList) {
-        out.writeInt(member.getNo());
-        out.writeUTF(member.getName());
-        out.writeUTF(member.getEmail());
-        out.writeUTF(member.getPassword());
-        out.writeChar(member.getGender());
-
-        /*
-         * writeUTF 생성
-         *
-         * byte[] bytes = member.getName().getBytes("UTF-8"); // 출력할 바이트의 개수를 2바이트로 표시한다.
-         * out.write(bytes.length >> 8); out.write(bytes.length);
-         *
-         * // 문자열의 바이트를 출력한다. out.write(bytes);
-         *
-         *
-         * bytes = member.getEmail().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         * bytes = member.getPassword().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         *
-         * char gender = member.getGender(); out.write(gender >> 8); out.write(gender);
-         */
-      }
-      out.close();
-
-    } catch (Exception e) {
-      System.out.println("회원 정보를 저장하는 중 오류 발생!");
-    }
-  }
-
-  private void saveBoard(String filename, List<Board> list) {
-    try {
-      DataOutputStream out = new DataOutputStream(filename);
-
-      // 저장할 데이터의 개수를 먼저 출력한다.
-      out.writeShort(list.size());
-
-
-      for (Board board : list) {
-        out.writeInt(board.getNo());
-        out.writeUTF(board.getTitle());
-        out.writeUTF(board.getContent());
-        out.writeUTF(board.getWriter());
-        out.writeUTF(board.getPassword());
-        out.writeInt(board.getViewCount());
-        out.writeLong(board.getCreatedDate());
-
-
-        /*
-         *
-         * byte[] bytes = board.getTitle().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         *
-         * bytes = board.getContent().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         * bytes = board.getWriter().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         * bytes = board.getPassword().getBytes("UTF-8"); out.write(bytes.length >> 8);
-         * out.write(bytes.length); out.write(bytes);
-         *
-         * int viewCount = board.getViewCount(); out.write(viewCount >> 24); out.write(viewCount >>
-         * 16); out.write(viewCount >> 8); out.write(viewCount);
-         *
-         * long createdDate = board.getCreatedDate(); out.write((int) (createdDate >> 56));
-         * out.write((int) (createdDate >> 48)); out.write((int) (createdDate >> 40));
-         * out.write((int) (createdDate >> 32)); out.write((int) (createdDate >> 24));
-         * out.write((int) (createdDate >> 16)); out.write((int) (createdDate >> 8));
-         * out.write((int) createdDate);
-         */
+      for (CsvObject obj : list) {
+        out.println(obj.toCsvString());
+        // Board나 Member 클래스에 필드가 추가/변경/삭제되더라도
+        // 여기 코드를 변경할 필요가 없다.
+        // 이것이 Information Expert 설계를 적용하는 이유다!
+        // 설계를 어떻게 하느냐에 따라 유지보수가 쉬워질 수도 있고,
+        // 어려워질 수도 있다.
       }
       out.close();
 

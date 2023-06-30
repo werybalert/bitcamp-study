@@ -1,15 +1,38 @@
 package bitcamp.io;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
-public class DataOutputStream extends FileOutputStream {
+public class DataOutputStream extends OutputStream {
+
+  // 0629 실습
+  OutputStream original;
 
   // source > Generate Constructors from Superclass
-  public DataOutputStream(String name) throws FileNotFoundException {
-    super(name);
+  public DataOutputStream(OutputStream original) {
+    this.original = original;;
   }
+
+  // 0629 실습
+  @Override
+  public void write(int b) throws IOException {
+    original.write(b);
+  }
+
+  @Override
+  public void flush() throws IOException {
+    original.flush();
+  }
+
+
+  // 0629 실습
+  @Override
+  public void close() throws IOException {
+    this.flush();
+    original.close();
+
+  }
+
 
   public void writeShort(int v) throws IOException {
     this.write(v >> 8);
