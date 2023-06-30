@@ -1,4 +1,4 @@
-package bitcamp.myapp2;
+package bitcamp.myapp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,22 +9,22 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import bitcamp.myapp2.handler.BoardAddListener;
-import bitcamp.myapp2.handler.BoardDeleteListener;
-import bitcamp.myapp2.handler.BoardDetailListener;
-import bitcamp.myapp2.handler.BoardListListener;
-import bitcamp.myapp2.handler.BoardUpdateListener;
-import bitcamp.myapp2.handler.FooterListener;
-import bitcamp.myapp2.handler.HeaderListener;
-import bitcamp.myapp2.handler.HelloListener;
-import bitcamp.myapp2.handler.MemberAddListener;
-import bitcamp.myapp2.handler.MemberDeleteListener;
-import bitcamp.myapp2.handler.MemberDetailListener;
-import bitcamp.myapp2.handler.MemberListListener;
-import bitcamp.myapp2.handler.MemberUpdateListener;
-import bitcamp.myapp2.vo.Board;
-import bitcamp.myapp2.vo.CsvObject;
-import bitcamp.myapp2.vo.Member;
+import bitcamp.myapp.handler.BoardAddListener;
+import bitcamp.myapp.handler.BoardDeleteListener;
+import bitcamp.myapp.handler.BoardDetailListener;
+import bitcamp.myapp.handler.BoardListListener;
+import bitcamp.myapp.handler.BoardUpdateListener;
+import bitcamp.myapp.handler.FooterListener;
+import bitcamp.myapp.handler.HeaderListener;
+import bitcamp.myapp.handler.HelloListener;
+import bitcamp.myapp.handler.MemberAddListener;
+import bitcamp.myapp.handler.MemberDeleteListener;
+import bitcamp.myapp.handler.MemberDetailListener;
+import bitcamp.myapp.handler.MemberListListener;
+import bitcamp.myapp.handler.MemberUpdateListener;
+import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.CsvObject;
+import bitcamp.myapp.vo.Member;
 import bitcamp.util.BreadcrumbPrompt;
 import bitcamp.util.Menu;
 import bitcamp.util.MenuGroup;
@@ -49,7 +49,7 @@ public class App {
 
   static void printTitle() {
     System.out.println("나의 목록 관리 시스템");
-
+    System.out.println("----------------------------------");
   }
 
   public void execute() {
@@ -142,7 +142,7 @@ public class App {
     }
   }
 
-  private void saveCsv(String filename, List<? extends CsvObject> list) { // ? : 아직 결정된건 없다.
+  private void saveCsv(String filename, List<? extends CsvObject> list) {
     try {
       FileWriter out0 = new FileWriter(filename);
       BufferedWriter out1 = new BufferedWriter(out0); // <== Decorator(장식품) 역할 수행!
