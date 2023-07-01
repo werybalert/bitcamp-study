@@ -9,7 +9,7 @@ public class startGame {
   public static void startGame() {
 
     life.lives = 100;
-    playGuessNumberGame.GuessNumGame();
+    PlayGuessNumberGame.GuessNumGame();
     Prompt.scanner.close();
 
   }

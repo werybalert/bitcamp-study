@@ -6,17 +6,21 @@ public class Menu {
 
   private String title;
   private ArrayList<ActionListener> listeners = new ArrayList<>();
+  private BreadcrumbPrompt prompt;
+  private String string;
 
-  public Menu(String title) {
-    this.title = title;
+  public Menu(BreadcrumbPrompt prompt) {
+    this.prompt = prompt;
   }
 
-  public Menu(String title, ActionListener listener) {
-    this(title);
+  public Menu(String string, ActionListener listener) {
     this.addActionListener(listener);
   }
 
-  public Menu(Object guessNumGame) {}
+
+  public Menu(String string) {
+    this.string = string;
+  }
 
   public void addActionListener(ActionListener listener) {
     listeners.add(listener);
@@ -34,6 +38,7 @@ public class Menu {
     for (int i = 0; i < listeners.size(); i++) {
       ActionListener listener = listeners.get(i);
       listener.service(prompt);
+
     }
   }
 }

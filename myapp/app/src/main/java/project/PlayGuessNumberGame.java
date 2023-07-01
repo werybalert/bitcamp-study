@@ -4,8 +4,10 @@ import java.util.InputMismatchException;
 import project.myapp.heart.life;
 import project.myapp.heart.totalpoint;
 import project.myapp.prompt.Prompt;
+import project.util.ActionListener;
+import project.util.BreadcrumbPrompt;
 
-public class playGuessNumberGame {
+public class PlayGuessNumberGame implements ActionListener {
   public static int low;
   public static int high;
   public static int card;
@@ -84,6 +86,11 @@ public class playGuessNumberGame {
     }
     return n;
   } // getInput 끗
+
+  @Override
+  public void service(BreadcrumbPrompt prompt) {
+    playGame();
+  }
 
 
 }

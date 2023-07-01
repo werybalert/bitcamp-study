@@ -1,11 +1,12 @@
 package project.myapp.handler;
 
 import java.util.List;
-import bitcamp.myapp.vo.Member;
-import bitcamp.util.ActionListener;
-import bitcamp.util.BreadcrumbPrompt;
+import project.myapp.vo.Member;
+import project.util.ActionListener;
+import project.util.BreadcrumbPrompt;
 
-public abstract class AbstractMemberListener implements ActionListener {
+
+public class AbstractMemberListener implements ActionListener {
 
   protected List<Member> list;
 
@@ -15,8 +16,14 @@ public abstract class AbstractMemberListener implements ActionListener {
 
   }
 
-  protected static String toGenderString(char gender) {
+  public static String toGenderString(char gender) {
     return gender == 'M' ? "남성" : "여성";
+  }
+
+
+  @Override
+  public void service(BreadcrumbPrompt prompt) {
+
   }
 
   protected Member findBy(int no) {

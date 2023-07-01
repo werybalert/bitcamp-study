@@ -1,8 +1,6 @@
 package project.util;
 
 import java.util.ArrayList;
-import bitcamp.util.BreadcrumbPrompt;
-import bitcamp.util.Menu;
 
 public class ManagerGroup extends Menu {
 
@@ -12,6 +10,7 @@ public class ManagerGroup extends Menu {
     super(title);
     this.childs = new ArrayList<>();
   }
+
 
   public void add(Menu menu) {
     this.childs.add(menu);

@@ -2,7 +2,7 @@ package project.myapp.prompt;
 
 import java.util.Random;
 import java.util.Scanner;
-import project.playGuessNumberGame;
+import project.PlayGuessNumberGame;
 
 
 public class Prompt {
@@ -12,7 +12,6 @@ public class Prompt {
   public static Scanner scanner = new Scanner(System.in);
   // Random과 Scanner 객체를 생성합니다.
 
-
   public static void main(String[] args) {}
 
   public static String inputString(String title) {
@@ -21,10 +20,8 @@ public class Prompt {
   }
 
   public static boolean isOutOfRange(int n) {
-    return n > playGuessNumberGame.high || n < playGuessNumberGame.low;
+    return n > PlayGuessNumberGame.high || n < PlayGuessNumberGame.low;
   }
-
-
 
   public static int RandomNumber() {
     return random.nextInt(100);

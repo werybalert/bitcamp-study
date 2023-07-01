@@ -6,10 +6,16 @@ public class MenuGroup extends Menu {
 
   ArrayList<Menu> childs;
 
-  public MenuGroup(String title) {
+  public MenuGroup(BreadcrumbPrompt title) {
     super(title);
     this.childs = new ArrayList<>();
   }
+
+  public MenuGroup(String title2) {
+    super(title2);
+    this.childs = new ArrayList<>();
+  }
+
 
   public void add(Menu menu) {
     this.childs.add(menu);
@@ -47,6 +53,6 @@ public class MenuGroup extends Menu {
       Menu menu = childs.get(i);
       System.out.printf("%d. %s\n", i + 1, menu.getTitle());
     }
-    System.out.println("0. 이전/종료");
+    System.out.println("이전/종료");
   }
 }

@@ -2,7 +2,7 @@ package project.util;
 
 import java.util.Stack;
 
-public class BreadcrumbPrompt extends Prompt {
+public abstract class BreadcrumbPrompt extends Prompt {
 
   private Stack<String> breadcrumbs = new Stack<>();
 
@@ -26,11 +26,5 @@ public class BreadcrumbPrompt extends Prompt {
     return this.inputString(titleBuilder.toString());
   }
 }
-
-
-
-
-
-
 
 
