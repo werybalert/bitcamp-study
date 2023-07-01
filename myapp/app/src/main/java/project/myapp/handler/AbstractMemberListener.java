@@ -58,4 +58,9 @@ public class AbstractMemberListener implements ActionListener {
     }
   }
 
+  public void service(bitcamp.util.BreadcrumbPrompt prompt) {
+    // TODO Auto-generated method stub
+
+  }
+
 }
