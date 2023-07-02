@@ -17,13 +17,13 @@ public class Prompt {
     this.scanner = new Scanner(in);
   }
 
-  public String inputString(String title, Object... args) {
-    System.out.printf(title, args);
+  public String inputString(String title ) {
+    System.out.printf(title);
     return this.scanner.nextLine();
   }
 
-  public int inputInt(String title, Object... args) {
-    return Integer.parseInt(this.inputString(title, args));
+  public int inputInt(String title) {
+    return Integer.parseInt(this.inputString(title));
   }
 
   public void close() {
