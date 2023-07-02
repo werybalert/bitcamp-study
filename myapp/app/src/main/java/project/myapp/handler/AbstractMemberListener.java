@@ -1,29 +1,25 @@
 package project.myapp.handler;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import project.myapp.PlayGuessNumberGame;
 import project.myapp.vo.Member;
 import project.util.ActionListener;
 import project.util.BreadcrumbPrompt;
 
-
-public class AbstractMemberListener implements ActionListener {
+public abstract class AbstractMemberListener implements ActionListener {
 
   protected List<Member> list;
 
-
+  
   public AbstractMemberListener(List<Member> list) {
     this.list = list;
-
   }
 
-  public static String toGenderString(char gender) {
+
+protected static String toGenderString(char gender) {
     return gender == 'M' ? "남성" : "여성";
-  }
-
-
-  @Override
-  public void service(BreadcrumbPrompt prompt) {
-
   }
 
   protected Member findBy(int no) {
@@ -45,7 +41,10 @@ public class AbstractMemberListener implements ActionListener {
     }
 
     while (true) {
-      String menuNo = prompt.inputString(label + "  1. 남자\n" + "  2. 여자\n" + "> ");
+      String menuNo = prompt.inputString(label +
+          "  1. 남자\n" +
+          "  2. 여자\n" +
+          "> ");
 
       switch (menuNo) {
         case "1":
@@ -56,11 +55,6 @@ public class AbstractMemberListener implements ActionListener {
           System.out.println("무효한 번호입니다.");
       }
     }
-  }
-
-  public void service(bitcamp.util.BreadcrumbPrompt prompt) {
-    // TODO Auto-generated method stub
-
   }
 
 }

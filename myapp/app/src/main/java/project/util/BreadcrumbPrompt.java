@@ -1,9 +1,18 @@
 package project.util;
 
 import java.util.Stack;
+import java.util.Random;
+import java.util.Scanner;
 
-public abstract class BreadcrumbPrompt extends Prompt {
+import project.myapp.PlayGuessNumberGame;
 
+public class BreadcrumbPrompt extends Prompt {
+
+	 public static Random random = new Random();
+	 public static Scanner scanner = new Scanner(System.in);
+
+	  // Random과 Scanner 객체를 생성합니다.
+	
   private Stack<String> breadcrumbs = new Stack<>();
 
   public void appendBreadcrumb(String title) {
@@ -25,6 +34,21 @@ public abstract class BreadcrumbPrompt extends Prompt {
     titleBuilder.append("> ");
     return this.inputString(titleBuilder.toString());
   }
+
+public int RandomNumber() {
+    return random.nextInt(100);
 }
+
+public boolean isOutOfRange(int n) {
+    return n > PlayGuessNumberGame.high || n < PlayGuessNumberGame.low;
+	
+}
+}
+
+
+
+
+
+
 
 

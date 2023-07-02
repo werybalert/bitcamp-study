@@ -1,6 +1,7 @@
 package project.myapp.handler;
 
 import java.util.List;
+
 import project.myapp.vo.Member;
 import project.util.BreadcrumbPrompt;
 
@@ -9,7 +10,6 @@ public class MemberDetailListener extends AbstractMemberListener {
   public MemberDetailListener(List<Member> list) {
     super(list);
   }
-
 
   @Override
   public void service(BreadcrumbPrompt prompt) {
@@ -24,7 +24,12 @@ public class MemberDetailListener extends AbstractMemberListener {
     System.out.printf("이름: %s\n", m.getName());
     System.out.printf("성별: %s\n", toGenderString(m.getGender()));
     System.out.printf("점수: %s\n", m.getTotalPoints());
-
+    
   }
 
+@Override
+public void service(BreadcrumbPrompt prompt, List<Member> list) {
+	// TODO Auto-generated method stub
+	
+}
 }

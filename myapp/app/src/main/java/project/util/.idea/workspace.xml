@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9162cda1-43de-45a4-9a42-8af1c5e9864d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../../../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../nc7_algorithm/nc7_algorithm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../Hello.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../Test1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../hello.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../hello.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../board.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../board.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../board.data2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../member.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../member.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../member.data2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../reading.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../reading.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../reading.data2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcamp/myapp/app/src/main/java/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcamp/myapp/app/src/main/java/myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcamp/util/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcamp/util/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlayGuessNumberGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/PlayGuessNumberGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/AbstractMemberListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/MemberAddListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/MemberDeleteListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/MemberDetailListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/MemberListListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/handler/MemberUpdateListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/heart/life.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/heart/totalpoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/prompt/Prompt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myapp/vo/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../startGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreadcrumbPrompt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ManagerGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prompt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/src/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/src/vo/Score.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../untitled/untitled.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../../.." />
+  </component>
+  <component name="ProjectId" id="2S1BNKRJvNyfS7g1Wsx9D6qljMM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/USER/git/bitcamp-file/myapp/app/src/main/java/project"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9162cda1-43de-45a4-9a42-8af1c5e9864d" name="Changes" comment="" />
+      <created>1688304165755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688304165755</updated>
+    </task>
+    <servers />
+  </component>
+</project>
