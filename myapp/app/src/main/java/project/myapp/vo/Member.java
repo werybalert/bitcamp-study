@@ -2,14 +2,12 @@ package project.myapp.vo;
 
 import java.io.Serializable;
 
-import project.util.Prompt;
-
 public class Member implements Serializable, CsvObject {
   private static final long serialVersionUID = 1L;
 
   public static int userId = 1;
 
-public static int totalPoints;
+  public static int totalPoints;
 
   public static final char MALE = 'M';
   public static final char FEMALE = 'W';
@@ -36,18 +34,15 @@ public static int totalPoints;
     if (Member.userId <= member.getNo()) {
       Member.userId = member.getNo() + 1;
     }
-
     return member;
   }
 
   @Override
   public String toCsvString() {
-    return String.format("%d,%s,%s,%d",
-        this.getNo(),
-        this.getName(),
-        this.getGender(),
+    return String.format("%d,%s,%s,%d", this.getNo(), this.getName(), this.getGender(),
         this.getTotalPoints());
   }
+
   public boolean equals(Object obj) {
     if (obj == null) {
       return false;
@@ -65,34 +60,38 @@ public static int totalPoints;
   public int getNo() {
     return no;
   }
+
   public void setNo(int no) {
     this.no = no;
   }
+
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
- 
+
   public char getGender() {
     return gender;
   }
+
   public void setGender(char gender) {
     this.gender = gender;
   }
 
-public int getTotalPoints() {
-	return totalPoints;
-}
+  public int getTotalPoints() {
+    return totalPoints;
+  }
 
-public void setTotalPoints(int totalPoints) {
-	Member.totalPoints = totalPoints;
-}
+  public int setTotalPoints(int totalPoints) {
+    return this.totalPoints = totalPoints;
+  }
 
-public void setTotalPoints(Object addPoints) {
-	Member.totalPoints = totalPoints;
-	
-}
+  public int setTotalPoints(Object addPoints) {
+    return this.totalPoints = totalPoints;
+
+  }
 
 }

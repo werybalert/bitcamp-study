@@ -17,7 +17,7 @@ public class Prompt {
     this.scanner = new Scanner(in);
   }
 
-  public String inputString(String title ) {
+  public String inputString(String title) {
     System.out.printf(title);
     return this.scanner.nextLine();
   }
