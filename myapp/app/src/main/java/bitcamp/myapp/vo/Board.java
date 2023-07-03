@@ -2,7 +2,7 @@ package bitcamp.myapp.vo;
 
 import java.io.Serializable;
 
-public class Board implements Serializable, CsvObject { // interface는 다중 구현 가능하다!
+public class Board implements Serializable, CsvObject, AutoIncrement { // interface는 다중 구현 가능하다!
 
   // 0630 실습
   // Member > Add default serial Version 2D
@@ -19,8 +19,8 @@ public class Board implements Serializable, CsvObject { // interface는 다중 �
   private long createdDate;
 
   public Board() {
-    this.no = boardNo++;
-    this.createdDate = System.currentTimeMillis();
+    // this.no = boardNo++;
+    // this.createdDate = System.currentTimeMillis();
   }
 
   public Board(int no) {
@@ -41,8 +41,6 @@ public class Board implements Serializable, CsvObject { // interface는 다중 �
     if (Board.boardNo <= board.getNo()) {
       Board.boardNo = board.getNo() + 1;
     }
-
-
 
     return board;
   }
@@ -127,5 +125,11 @@ public class Board implements Serializable, CsvObject { // interface는 다중 �
     this.password = password;
   }
 
+  @Override
+  public void updateKey() {
+    if (Board.boardNo <= this.no) {
+      Board.boardNo = this.no + 1;
+    }
+  }
 
 }

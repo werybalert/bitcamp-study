@@ -2,7 +2,8 @@ package bitcamp.myapp.vo;
 
 import java.io.Serializable;
 
-public class Member implements Serializable, CsvObject { // Serializable : 직렬화 연결 표시(메소드 x )
+public class Member implements Serializable, CsvObject, AutoIncrement { // Serializable : 직렬화 연결
+                                                                        // 표시(메소드 x )
 
   // 0630 실습
   // Member > Add default serial Version 2D
@@ -20,7 +21,7 @@ public class Member implements Serializable, CsvObject { // Serializable : 직�
   private char gender;
 
   public Member() {
-    this.no = userId++;
+    // this.no = userId++;
   }
 
   public Member(int no) {
@@ -111,6 +112,13 @@ public class Member implements Serializable, CsvObject { // Serializable : 직�
 
   public Object getpoint() {
     return null;
+  }
+
+  @Override
+  public void updateKey() {
+    if (Member.userId <= this.no) {
+      Member.userId = this.no + 1;
+    }
   }
 
 }
