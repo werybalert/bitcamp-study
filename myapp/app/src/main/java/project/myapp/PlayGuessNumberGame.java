@@ -16,6 +16,8 @@ public class PlayGuessNumberGame implements ActionListener {
   public static int point;
 
   protected List<Member> list;
+  protected Member currentMember; // 현재 게임 참여한 Member 객체
+
 
   public PlayGuessNumberGame(List<Member> list) {
     this.list = list; // 전달받은 list로 초기화
@@ -31,6 +33,10 @@ public class PlayGuessNumberGame implements ActionListener {
       m.setGender(inputGender((char) 0, prompt));
 
       this.list.add(m);
+
+      // 현재 게임 참여한 Member 객체 설정
+      currentMember = m;
+
       break;
     }
 
@@ -71,7 +77,6 @@ public class PlayGuessNumberGame implements ActionListener {
   private void playGame(BreadcrumbPrompt prompt) {
 
     while (true) {
-      point = 0;
       low = 0;
       high = 10;
       card = prompt.RandomNumber();
@@ -113,20 +118,27 @@ public class PlayGuessNumberGame implements ActionListener {
         System.out.println("획득한 점수: " + point + "점");
       }
 
-      Life.displayResult();
-      Totalpoint.addPoints(point);
+
 
       System.out.print("다시 하시겠습니까? (y/n) >>");
       String playAgain = prompt.scanner.next();
       if (playAgain.equalsIgnoreCase("n")) {
         break; // while 루프를 종료하여 게임을 완전히 종료합니다
       } else if (playAgain.equalsIgnoreCase("y")) {
-
         continue; // playGame 메서드를 다시 실행합니다.
       } else {
         System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
         break; // 잘못된 입력이므로 게임을 종료합니다.
       }
+    } // while 긋
+    Life.displayResult();
+    if (list.size() > 0) {
+      // 현재 게임 참여한 Member 객체 가져오기
+      currentMember = list.get(list.size() - 1);
+      // Totalpoint 객체 생성
+      Totalpoint totalpoint = new Totalpoint();
+      // point 값을 Member 객체에 추가
+      totalpoint.addPoints(currentMember, point);
     }
   }
 
@@ -147,5 +159,6 @@ public class PlayGuessNumberGame implements ActionListener {
     // TODO Auto-generated method stub
 
   }
+
 
 }

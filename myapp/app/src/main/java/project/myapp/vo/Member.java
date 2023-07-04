@@ -2,12 +2,10 @@ package project.myapp.vo;
 
 import java.io.Serializable;
 
-public class Member implements Serializable, CsvObject {
+public class Member implements Serializable, CsvObject, AutoIncrement {
   private static final long serialVersionUID = 1L;
 
   public static int userId = 1;
-
-  public static int totalPoints;
 
   public static final char MALE = 'M';
   public static final char FEMALE = 'W';
@@ -15,6 +13,7 @@ public class Member implements Serializable, CsvObject {
   private int no;
   private String name;
   private char gender;
+  public int totalPoints;
 
   public Member() {
     this.no = userId++;
@@ -30,6 +29,7 @@ public class Member implements Serializable, CsvObject {
     Member member = new Member(Integer.parseInt(values[0]));
     member.setName(values[1]);
     member.setGender(values[2].charAt(0));
+    member.setTotalPoints(Integer.parseInt(values[3]));
 
     if (Member.userId <= member.getNo()) {
       Member.userId = member.getNo() + 1;
@@ -85,13 +85,14 @@ public class Member implements Serializable, CsvObject {
     return totalPoints;
   }
 
-  public int setTotalPoints(int totalPoints) {
-    return this.totalPoints = totalPoints;
+  public void setTotalPoints(int totalPoints) {
+    this.totalPoints = totalPoints;
   }
 
-  public int setTotalPoints(Object addPoints) {
-    return this.totalPoints = totalPoints;
-
+  @Override
+  public void updateKey() {
+    if (Member.userId <= this.no) {
+      Member.userId = this.no + 1;
+    }
   }
-
 }

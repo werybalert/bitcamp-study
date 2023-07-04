@@ -40,7 +40,6 @@ public class BreadcrumbPrompt extends Prompt {
 
   public boolean isOutOfRange(int n) {
     return n > PlayGuessNumberGame.high || n < PlayGuessNumberGame.low;
-
   }
 }
 
