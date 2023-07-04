@@ -27,12 +27,14 @@ public class PlayGuessNumberGame implements ActionListener {
   public void service(BreadcrumbPrompt prompt) {
     boolean playAgain = true;
     while (playAgain) {
-      playGame(prompt);
       Member m = new Member();
       m.setName(prompt.inputString("이름? "));
       m.setGender(inputGender((char) 0, prompt));
 
       this.list.add(m);
+
+      playGame(prompt);
+
 
       // 현재 게임 참여한 Member 객체 설정
       currentMember = m;
@@ -78,7 +80,7 @@ public class PlayGuessNumberGame implements ActionListener {
 
     while (true) {
       low = 0;
-      high = 10;
+      high = 50;
       card = prompt.RandomNumber();
 
       System.out.println("Up & Down 게임입니다. 숨겨진 수를 맞추어 보세요");
@@ -130,11 +132,13 @@ public class PlayGuessNumberGame implements ActionListener {
         System.out.println("잘못된 입력입니다. 게임을 종료합니다.");
         break; // 잘못된 입력이므로 게임을 종료합니다.
       }
-    } // while 긋
+    }
+
     Life.displayResult();
     if (list.size() > 0) {
       // 현재 게임 참여한 Member 객체 가져오기
       currentMember = list.get(list.size() - 1);
+      System.out.println("플레이어 이름 : " + currentMember.getName());
       // Totalpoint 객체 생성
       Totalpoint totalpoint = new Totalpoint();
       // point 값을 Member 객체에 추가

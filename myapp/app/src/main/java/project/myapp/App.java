@@ -14,6 +14,7 @@ import bitcamp.myapp.vo.AutoIncrement;
 import project.myapp.handler.MemberAddListener;
 import project.myapp.handler.MemberDeleteListener;
 import project.myapp.handler.MemberDetailListener;
+import project.myapp.handler.MemberLankListener;
 import project.myapp.handler.MemberListListener;
 import project.myapp.handler.MemberUpdateListener;
 import project.myapp.vo.Member;
@@ -63,11 +64,14 @@ public class App {
 
   private void prepareMenu() {
     MenuGroup boardMenu = new MenuGroup("게임시작");
+    MenuGroup memberMenu = new MenuGroup("관리 모드");
 
     boardMenu.add(new Menu("게임 시작", new PlayGuessNumberGame(memberList)));
+
+
     mainMenu.add(boardMenu);
 
-    MenuGroup memberMenu = new MenuGroup("관리 모드");
+    boardMenu.add(new Menu("User 순위", new MemberLankListener(memberList)));
     memberMenu.add(new Menu("전적 조회", new MemberListListener(memberList)));
     memberMenu.add(new Menu("User 등록", new MemberAddListener(memberList)));
     memberMenu.add(new Menu("User 조회", new MemberDetailListener(memberList)));

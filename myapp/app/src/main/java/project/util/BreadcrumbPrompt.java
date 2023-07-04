@@ -35,7 +35,7 @@ public class BreadcrumbPrompt extends Prompt {
   }
 
   public int RandomNumber() {
-    return random.nextInt(10);
+    return random.nextInt(50);
   }
 
   public boolean isOutOfRange(int n) {

@@ -22,7 +22,7 @@ public class Life {
   }
 
   public static void resetLives() {
-    lives = 10;
+    lives = 5;
   }
 
 
