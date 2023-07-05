@@ -11,6 +11,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import bitcamp.myapp.dao.MemberDao;
+import bitcamp.myapp.dao.MemberListDao;
 import bitcamp.myapp.handler.BoardAddListener;
 import bitcamp.myapp.handler.BoardDeleteListener;
 import bitcamp.myapp.handler.BoardDetailListener;
@@ -33,6 +35,9 @@ import bitcamp.util.MenuGroup;
 
 
 public class App {
+
+  MemberDao memberDao = new MemberListDao("member.json");
+
 
   ArrayList<Member> memberList = new ArrayList<>();
   LinkedList<Board> boardList = new LinkedList<>();
@@ -80,8 +85,8 @@ public class App {
 
   private void prepareMenu() {
     MenuGroup memberMenu = new MenuGroup("회원");
-    memberMenu.add(new Menu("등록", new MemberAddListener(memberList)));
-    memberMenu.add(new Menu("목록", new MemberListListener(memberList)));
+    memberMenu.add(new Menu("등록", new MemberAddListener(memberDao)));
+    memberMenu.add(new Menu("목록", new MemberListListener(memberDao)));
     memberMenu.add(new Menu("조회", new MemberDetailListener(memberList)));
     memberMenu.add(new Menu("변경", new MemberUpdateListener(memberList)));
     memberMenu.add(new Menu("삭제", new MemberDeleteListener(memberList)));
@@ -119,7 +124,7 @@ public class App {
    */
 
   // 0630 실습 (loadMember + loadBoard 중복을 방지하고자 혼합한 코드)
-  private <T, Gson> void loadJson(String filename, List<T> list, Class<T> clazz) {
+  private <T> void loadJson(String filename, List<T> list, Class<T> clazz) {
     try {
       FileReader in0 = new FileReader(filename);
       BufferedReader in = new BufferedReader(in0); // <== Decorator 역할을 수행!
@@ -133,9 +138,8 @@ public class App {
 
       in.close();
 
-      Gson gson = (Gson) new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-
-      Collection<T> objects = ((com.google.gson.Gson) gson).fromJson(strBuilder.toString(),
+      Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+      Collection<T> objects = gson.fromJson(strBuilder.toString(),
           TypeToken.getParameterized(Collection.class, clazz).getType());
 
       list.addAll(objects);
@@ -150,16 +154,14 @@ public class App {
       }
 
     } catch (Exception e) {
-      System.out.println(filename + "파일을 읽는 중 오류 발생!");
+      System.out.println(filename + " 파일을 읽는 중 오류 발생!");
     }
   }
-
-
 
   private void saveJson(String filename, List<?> list) {
     try {
       FileWriter out0 = new FileWriter(filename);
-      BufferedWriter out = new BufferedWriter(out0); // <== Decorator(장식품) 역할 수행!
+      BufferedWriter out = new BufferedWriter(out0);
 
       Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").setPrettyPrinting().create();
       out.write(gson.toJson(list));
@@ -167,7 +169,7 @@ public class App {
       out.close();
 
     } catch (Exception e) {
-      System.out.println(filename + "파일을 저장하는 중 오류 발생!");
+      System.out.println(filename + " 파일을 저장하는 중 오류 발생!");
     }
   }
 

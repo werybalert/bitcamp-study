@@ -1,0 +1,26 @@
+[
+  {
+    "no": 2,
+    "name": "거북이",
+    "gender": "W",
+    "totalPoints": 150
+  },
+  {
+    "no": 1,
+    "name": "거미",
+    "gender": "M",
+    "totalPoints": 100
+  },
+  {
+    "no": 4,
+    "name": "개미",
+    "gender": "W",
+    "totalPoints": 50
+  },
+  {
+    "no": 5,
+    "name": "돼지",
+    "gender": "W",
+    "totalPoints": 0
+  }
+]

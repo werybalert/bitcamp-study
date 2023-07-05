@@ -19,9 +19,9 @@ public class MemberLankListener extends AbstractMemberListener {
   @Override
   public void service(BreadcrumbPrompt prompt) {
     System.out.println("회원 순위");
-    System.out.println("-----------------------");
+    System.out.println("-------------------------------------");
     System.out.println("번호\t이름\t성별\t총 점수");
-    System.out.println("-----------------------");
+    System.out.println("-------------------------------------");
 
     // 회원 리스트를 총 점수에 따라 내림차순으로 정렬합니다.
     list.sort((m1, m2) -> m2.getTotalPoints() - m1.getTotalPoints());
@@ -34,5 +34,4 @@ public class MemberLankListener extends AbstractMemberListener {
       rank++;
     }
   }
-
 }
