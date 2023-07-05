@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="22d037de-c312-41e9-af32-e23faebe8ac8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/modules/myapp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/MemberListListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../nc7_algorithm/nc7_algorithm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/PlayGuessNumberGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/myapp/PlayGuessNumberGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/AbstractMemberListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/AbstractMemberListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/MemberAddListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/MemberAddListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/MemberDeleteListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/MemberDeleteListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/MemberDetailListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/MemberDetailListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/MemberListListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/handler/MemberUpdateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/project/myapp/handler/MemberUpdateListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/heart/life.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/myapp/heart/life.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/myapp/prompt/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/myapp/prompt/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/startGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/myapp/startGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/project/util/MenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/project/util/MenuListener.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2RyeuiE3RWgOTCIaiJcS2h2vXoP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/USER/git/bitcamp-file/myapp/app/src/main/java/project"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22d037de-c312-41e9-af32-e23faebe8ac8" name="Changes" comment="" />
+      <created>1688226973197</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688226973197</updated>
+    </task>
+    <servers />
+  </component>
+</project>
