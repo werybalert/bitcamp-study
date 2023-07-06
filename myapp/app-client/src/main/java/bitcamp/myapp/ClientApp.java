@@ -17,9 +17,7 @@ import bitcamp.myapp.handler.MemberDeleteListener;
 import bitcamp.myapp.handler.MemberDetailListener;
 import bitcamp.myapp.handler.MemberListListener;
 import bitcamp.myapp.handler.MemberUpdateListener;
-import bitcamp.test.FooterListener;
-import bitcamp.test.HeaderListener;
-import bitcamp.test.HelloListener;
+import bitcamp.net.RequestEntity;
 import bitcamp.util.BreadcrumbPrompt;
 import bitcamp.util.Menu;
 import bitcamp.util.MenuGroup;
@@ -46,15 +44,15 @@ public class ClientApp {
 
     this.memberDao = new MemberNetworkDao("member", in, out);
     this.boardDao = new BoardNetworkDao("board", in, out);
-    this.readingDao = new BoardNetworkDao("board", in, out);
+    this.readingDao = new BoardNetworkDao("reading", in, out);
 
     prepareMenu();
   }
 
   public void close() throws Exception {
     prompt.close();
-    in.close();
     out.close();
+    in.close();
     socket.close();
   }
 
@@ -75,17 +73,17 @@ public class ClientApp {
   }
 
   public void execute() {
-
     printTitle();
     mainMenu.execute(prompt);
 
     try {
-      out.writeUTF("quit");
+      out.writeUTF(new RequestEntity().command("quit").toJson());
+      // HashMap<String, Object> request = new HashMap<>();
+      // request.put("command", "quit");
     } catch (Exception e) {
       System.out.println("종료 오류");
       e.printStackTrace();
     }
-
     prompt.close();
   }
 
@@ -114,11 +112,7 @@ public class ClientApp {
     readingMenu.add(new Menu("삭제", new BoardDeleteListener(readingDao)));
     mainMenu.add(readingMenu);
 
-    Menu helloMenu = new Menu("안녕!");
-    helloMenu.addActionListener(new HeaderListener());
-    helloMenu.addActionListener(new HelloListener());
-    helloMenu.addActionListener(new FooterListener());
-    mainMenu.add(helloMenu);
+
   }
 }
 
