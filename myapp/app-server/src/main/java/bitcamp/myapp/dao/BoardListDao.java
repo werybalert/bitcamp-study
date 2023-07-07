@@ -1,6 +1,6 @@
 package bitcamp.myapp.dao;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.JsonDataHelper;
@@ -8,8 +8,7 @@ import bitcamp.util.JsonDataHelper;
 public class BoardListDao implements BoardDao {
 
   String filename;
-  LinkedList<Board> list = new LinkedList<>();
-
+  ArrayList<Board> list = new ArrayList<>();
 
   public BoardListDao(String filename) {
     this.filename = filename;
@@ -18,12 +17,10 @@ public class BoardListDao implements BoardDao {
 
   @Override
   public void insert(Board board) {
-
     board.setNo(Board.boardNo++);
     board.setCreatedDate(System.currentTimeMillis());
     this.list.add(board);
     JsonDataHelper.saveJson(filename, list);
-
   }
 
   @Override

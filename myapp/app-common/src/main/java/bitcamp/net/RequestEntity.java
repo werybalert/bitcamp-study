@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class RequestEntity {
-
   String command;
   String data;
 
@@ -20,22 +19,7 @@ public class RequestEntity {
 
   public <T> List<T> getList(Class<T> clazz) {
     return new Gson().fromJson(data,
-        TypeToken.getParameterized(java.awt.List.class, clazz).getType());
-  }
-
-
-  public RequestEntity command(String command) {
-    this.command = command;
-    return this;
-  }
-
-  public RequestEntity data(Object obj) {
-    if (obj.getClass() == String.class) {
-      this.data = (String) obj;
-    } else {
-      this.data = new Gson().toJson(obj);
-    }
-    return this;
+        TypeToken.getParameterized(List.class, clazz).getType());
   }
 
   public String toJson() {
@@ -46,6 +30,23 @@ public class RequestEntity {
     return new Gson().fromJson(json, RequestEntity.class);
   }
 
+  public RequestEntity command(String command) {
+    this.command = command;
+    return this;
+  }
+
+  public RequestEntity data(Object obj) {
+    if (obj == null) {
+      return this;
+    }
+
+    if (obj.getClass() == String.class) {
+      this.data = (String) obj;
+    } else {
+      this.data = new Gson().toJson(obj);
+    }
+    return this;
+  }
 
   public String getCommand() {
     return command;
@@ -54,7 +55,4 @@ public class RequestEntity {
   public String getData() {
     return data;
   }
-
-
-
 }

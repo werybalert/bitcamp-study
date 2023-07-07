@@ -1,10 +1,10 @@
 [
   {
     "no": 1,
-    "name": "1",
-    "email": "1",
+    "name": "2",
+    "email": "3",
     "password": "1",
-    "gender": "M"
+    "gender": "W"
   },
   {
     "no": 2,
@@ -60,6 +60,20 @@
     "name": "ff",
     "email": "ff@test.com",
     "password": "1111",
+    "gender": "M"
+  },
+  {
+    "no": 10,
+    "name": "ii",
+    "email": "ii@test.com",
+    "password": "11",
+    "gender": "M"
+  },
+  {
+    "no": 11,
+    "name": "a",
+    "email": "a",
+    "password": "a",
     "gender": "M"
   }
 ]

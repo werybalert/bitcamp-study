@@ -307,4 +307,29 @@
     - 33. character stream API를 사용하여 CSV 텍스트 형식으로 입출력하기
     - 34. 리팩토링: Factory Method 패턴(GoF), Information Expert 패턴(GRASP)
 
-  
+
+### 29일(7/03,월)
+
+- 자바 프로그래밍(com.eomcs.openapi.json)
+    - Gson 라이브러리 사용법
+    - Jackson 라이브러리 사용법
+- 프로젝트 실습
+    - 35. JSON 형식으로 입출력하기
+
+### 30일(7/04,화)
+
+- 자바 프로그래밍(com.eomcs.oop)
+    - 추상클래스(ex07) 사용법
+        - Template Method 패턴(GoF)
+    - 인터페이스(ex09, ex10) 사용법
+
+### 31일(7/05,수)
+
+- 프로젝트 실습
+    - 36. 데이터의 등록, 조회, 수정, 삭제 기능을 캡슐화하기 : DAO 객체 도입
+    - 37. 네트워킹을 이용하여 데이터 공유하기 : Client/Server 아키텍처로 전환
+
+### 32일(7/06,목)
+
+- 프로젝트 실습
+    - 37. 네트워킹을 이용하여 데이터 공유하기 : Client/Server 아키텍처로 전환
