@@ -1,4 +1,4 @@
-package bitcamp.test;
+package bitcamp.test1;
 
 public class Test {
 

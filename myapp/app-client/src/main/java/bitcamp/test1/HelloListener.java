@@ -1,4 +1,4 @@
-package bitcamp.test;
+package bitcamp.test1;
 
 import bitcamp.util.ActionListener;
 import bitcamp.util.BreadcrumbPrompt;
