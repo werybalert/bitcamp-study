@@ -1,9 +1,11 @@
+
 package bitcamp.myapp;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -11,18 +13,25 @@ import bitcamp.myapp.dao.BoardListDao;
 import bitcamp.myapp.dao.MemberListDao;
 import bitcamp.net.RequestEntity;
 import bitcamp.net.ResponseEntity;
+import bitcamp.util.ManagedThread;
+import bitcamp.util.ThreadPool;
 
 // 1) 클라이언트가 보낸 명령을 데이터이름과 메서드 이름으로 분리한다.
 // 2) 클라이언트가 요청한 DAO 객체와 메서드를 찾는다.
 // 3) 메서드의 파라미터와 리턴 타입을 알아내기
 // 4) 메서드 호출 및 리턴 값 받기
 // 5) 리팩토링
+
 public class ServerApp {
 
   int port;
   ServerSocket serverSocket;
 
   HashMap<String, Object> daoMap = new HashMap<>();
+
+  // 스레드를 리턴해 줄 스레드 풀 준비
+  ThreadPool threadPool = new ThreadPool();
+
 
   public ServerApp(int port) throws Exception {
     this.port = port;
@@ -48,56 +57,17 @@ public class ServerApp {
   }
 
   public void execute() throws Exception {
+
     System.out.println("[MyList 서버 애플리케이션]");
 
     this.serverSocket = new ServerSocket(port);
     System.out.println("서버 실행 중...");
 
-    Socket socket = serverSocket.accept();
-    DataInputStream in = new DataInputStream(socket.getInputStream());
-    DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-
     while (true) {
-      RequestEntity request = RequestEntity.fromJson(in.readUTF());
-
-      String command = request.getCommand();
-      System.out.println(command);
-
-      if (command.equals("quit")) {
-        break;
-      }
-
-      String[] values = command.split("/");
-      String dataName = values[0];
-      String methodName = values[1];
-
-      Object dao = daoMap.get(dataName);
-      if (dao == null) {
-        out.writeUTF(
-            new ResponseEntity().status(ResponseEntity.ERROR).result("데이터를 찾을 수 없습니다.").toJson());
-        continue;
-      }
-
-      // DAO 객체에서 메서드 찾기
-      Method method = findMethod(dao, methodName);
-      if (method == null) {
-        out.writeUTF(
-            new ResponseEntity().status(ResponseEntity.ERROR).result("메서드를 찾을 수 없습니다.").toJson());
-        continue;
-      }
-
-      // DAO 메서드 호출하기
-      Object result = call(dao, method, request);
-
-      ResponseEntity response = new ResponseEntity();
-      response.status(ResponseEntity.SUCCESS);
-      response.result(result);
-      out.writeUTF(response.toJson());
+      Socket socket = serverSocket.accept();
+      ManagedThread t = threadPool.getResource();
+      t.setJob(() ->processRequest(socket));
     }
-
-    in.close();
-    out.close();
-    socket.close();
   }
 
   // 메서드 찾기
@@ -120,6 +90,71 @@ public class ServerApp {
       return method.invoke(obj);
     }
   }
+
+  // 클라이언트와 접속이 이루어 지면 클라이언트의 요청 처리(무한으로 작동)
+  public void processRequest(Socket socket) {
+    // 자동 close를 위해 try옆에 표시
+    try (Socket s = socket;
+        DataInputStream in = new DataInputStream(socket.getInputStream());
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
+
+      InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+      System.out.printf("%s:%s 클라이언트가 접속했음!\n",
+          socketAddress.getHostString(),
+          socketAddress.getPort());
+      Thread.sleep(15000);
+      // 클라이언트 요청을 반복해서 처리하지 않는다.
+      // => 접속 -> 요청 -> 실행 -> 응답 -> 연결 끊기
+      RequestEntity request = RequestEntity.fromJson(in.readUTF());
+
+      String command = request.getCommand();
+      System.out.println(command);
+      
+
+      String[] values = command.split("/");
+      String dataName = values[0];
+      String methodName = values[1];
+
+
+      Object dao = daoMap.get(dataName);
+      if (dao == null) {
+        out.writeUTF(
+            new ResponseEntity().status(ResponseEntity.ERROR).result("데이터를 찾을 수 없습니다.").toJson());
+        return;
+      }
+
+
+      // DAO 객체에서 메서드 찾기
+      Method method = findMethod(dao, methodName);
+      if (method == null) {
+        out.writeUTF(
+            new ResponseEntity().status(ResponseEntity.ERROR).result("메서드를 찾을 수 없습니다.").toJson());
+        return;
+      }
+      // 0711 수정
+      try {
+        // DAO 메서드 호출하기
+        Object result = call(dao, method, request);
+
+        ResponseEntity response = new ResponseEntity();
+        response.status(ResponseEntity.SUCCESS);
+        response.result(result);
+        out.writeUTF(response.toJson());
+      } catch (Exception e) {
+        ResponseEntity response = new ResponseEntity();
+        response.status(ResponseEntity.ERROR);
+        response.result(e.getMessage());
+        out.writeUTF(response.toJson());
+      }
+
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+  // 삭제 되기전 close 존재했었다!- 0711
+  // in. close();
+  // out.close();
+  // socket.close();
 }
 
 
